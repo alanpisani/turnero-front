@@ -1,0 +1,20 @@
+.specialty-card img{
+    width:80%;
+    border-radius: 1rem;
+}
+
+.specialty-card p{
+    color:var(--gray)
+}
+
+.specialty-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.specialty-card div{
+    display:grid;
+    gap:1rem;
+}

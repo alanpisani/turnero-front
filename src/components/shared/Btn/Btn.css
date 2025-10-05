@@ -1,0 +1,16 @@
+.btn{
+    padding:.75rem 2rem;
+    background-color: var(--orange);
+    border: 4px solid var(--orange);
+    color: var(--blanco);
+    cursor: pointer;
+    border-radius: 1rem;
+    font-family: "Sinkin Sans 900 X Black";
+    transition: .1s ease;
+    font-size: 1.5rem;
+}
+
+.btn:hover{
+    background-color: var(--blanco);
+    color: var(--orange);
+}

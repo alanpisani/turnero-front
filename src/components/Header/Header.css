@@ -1,0 +1,40 @@
+header{
+    position:sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 0 15px var(--default-color)
+}
+
+nav {
+    background-color: var(--blanco);
+    padding: 20px;
+    display: flex;
+    font-family:"Sinkin Sans 400 Regular";
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a{
+    text-decoration: none;
+    color: var(--default-color);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding-right: 20px;
+}
+
+nav ul li {
+    font-size: .75rem;
+    color: var(--default-color);
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+nav ul li:hover{
+    color: var(--principal-color);
+}

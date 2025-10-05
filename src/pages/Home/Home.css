@@ -1,0 +1,35 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    background-color: var(--blanco);
+}
+
+main {
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+}
+
+h1 {
+    font-family: "Sinkin Sans 900 X Black";
+    font-size: 42px;
+}
+
+h2{
+    font-family: "Sinkin Sans 900 X Black";
+    font-size: 42px;
+    color: var(--gray);
+}
+
+h3{
+    color: var(--gray)
+}
+
+.section-content{
+    display: grid;
+    margin:5rem auto 0;
+    gap: 3rem;
+    width: 75%;
+}

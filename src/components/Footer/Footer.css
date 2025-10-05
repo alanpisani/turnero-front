@@ -1,0 +1,12 @@
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--bkc-footer);
+    font-size: 14px;
+    margin-top: 20px;
+    
+}
+
+footer p {
+    color: var(--blanco); 
+}

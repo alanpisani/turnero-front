@@ -1,0 +1,37 @@
+.primera-consulta-container{
+    background-image: url("./bk-01.jpg");
+    height: 375px;
+    display: flex;
+    justify-content: center;
+}
+
+.consulta-content{
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 75%;
+}
+
+.primera-consulta-container img{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    
+}
+
+.consulta-text-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.primera-consulta-container p{
+    font-family: "Sinkin Sans 900 X Black";
+    font-size: 37.5px;
+    color: var(--blanco);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}

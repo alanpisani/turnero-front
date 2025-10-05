@@ -1,0 +1,14 @@
+.simple-task{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.task-icon-container{
+    background-color: var(--principal-color);
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
