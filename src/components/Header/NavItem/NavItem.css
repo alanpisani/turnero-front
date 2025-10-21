@@ -1,0 +1,10 @@
+nav ul li a{
+    font-size: .75rem;
+    color: var(--default-color);
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+nav ul li a:hover{
+    color: var(--principal-color);
+}

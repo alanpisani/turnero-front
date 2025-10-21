@@ -1,12 +1,7 @@
+import type SpecialtyCardType from "../../../types/Home/SpecialtyCardType";
 import "./SpecialtyCard.css";
 
-interface SpecialtyCardProps{
-    srcImg: string;
-    title: string;
-    description: string;
-}
-
-export function SpecialtyCard({ srcImg, title, description }: SpecialtyCardProps){
+export function SpecialtyCard({ srcImg, title, description }: SpecialtyCardType){
     return (
         <div className="specialty-card">
             <img src={ srcImg } alt="" className="specialty-img" />

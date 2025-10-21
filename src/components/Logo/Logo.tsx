@@ -2,12 +2,17 @@ import "./Logo.css"
 
 import logo from "./logo.png";
 
-function Logo(){
+interface LogoProps{
+    title: string;
+    subtitle: string;
+}
+
+function Logo( { title, subtitle }: LogoProps ){
     return <div className="logo-container">
-        <img  className="logo" src={logo} alt=""/>
+        <img  className="logo" src={ logo } alt=""/>
         <div className="logo-text-content">
-            <p>Clínica</p>
-            <p><strong>DE MENTIRA</strong></p>
+            <p>{ title }</p>
+            <p><strong>{ subtitle }</strong></p>
         </div>
     </div>
 }

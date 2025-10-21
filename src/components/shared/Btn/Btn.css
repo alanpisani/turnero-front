@@ -8,6 +8,7 @@
     font-family: "Sinkin Sans 900 X Black";
     transition: .1s ease;
     font-size: 1.5rem;
+    align-self: center;
 }
 
 .btn:hover{

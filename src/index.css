@@ -40,6 +40,10 @@
     font-family: "Sinkin Sans 400 Regular";
 }
 
+html, body, #root {
+  height: 100%;
+}
+
 :root{
     --principal-color: #28d3d2;
     --blanco: #fff;
@@ -47,4 +51,10 @@
     --gray: #3a3a3a;
     --bkc-footer: #0a5151;
     --orange: #fd5b42;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
 }

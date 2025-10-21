@@ -1,10 +1,7 @@
+import type SimpleTaskType from "../../../types/Home/SimpleTaskType";
 import "./SimpleTask.css";
 
-interface SimpleTaskProps{
-    title: string;
-}
-
-export function SimpleTask({ title }: SimpleTaskProps){
+export function SimpleTask({ title }: SimpleTaskType){
     return (
         <div className="simple-task">
             <div className="task-icon-container"></div>

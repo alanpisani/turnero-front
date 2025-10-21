@@ -10,11 +10,11 @@ import { FirstConsultSection } from "../../components/Home/FirstConsultSection/F
 import { SpecialtiesSection } from "../../components/Home/SpecialtiesSection/SpecialtiesSection";
 import { ItsSimpleSection } from "../../components/Home/ItsSimpleSection/ItsSimpleSection";
 
-function Home() {
+export function Home() {
   return (
     <>
         <Header />
-        <main>
+        <main className="home-main">
             <HeroSection title={ "Brackets" } items={ heroItems }/>
             <WhyChooseUsSection title= "¿Por qué elegirnos?" items={ whyChooseUsItems }/>
             <FirstConsultSection />
@@ -25,5 +25,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;

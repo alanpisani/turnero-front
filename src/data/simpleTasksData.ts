@@ -1,8 +1,6 @@
-interface Task{
-    title: string;
-}
+import type SimpleTaskType from "../types/Home/SimpleTaskType";
 
-export const simpleTasksData: Task[] = [
+export const simpleTasksData: SimpleTaskType[] = [
     {
         title: "Registrate"
     },

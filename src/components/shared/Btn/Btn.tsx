@@ -1,11 +1,11 @@
 import "./Btn.css";
 
 interface BtnProps{
-    label: string;
+    label: string; 
 }
 
 export function Btn({ label }: BtnProps){
-    return <button className="btn">
+    return <button className="btn" >
         { label }
     </button>
 }

@@ -2,14 +2,10 @@ import generalImg from "../assets/img/odontologia_general.jpg";
 import ortodonciaImg from "../assets/img/ortodoncia.jpg";
 import cirujiaImg from "../assets/img/cirugia.jpg";
 import endodonciaImg from "../assets/img/endononcia.jpg";
+import type SpecialtyCardType from "../types/Home/SpecialtyCardType";
 
-interface specialtyCard{
-    srcImg: string;
-    title: string;
-    description: string;
-}
 
-export const specialitiesCardsData: specialtyCard[] = [
+export const specialitiesCardsData: SpecialtyCardType[] = [
     {
         srcImg: generalImg,
         title: "Odontología general",

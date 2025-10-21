@@ -1,0 +1,51 @@
+.form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-group i {
+    position: absolute;
+    right: 10px;
+    top: 56%;
+    color: #000000;
+    font-size: 20px;
+}
+
+.form-group label{
+    text-align: left;
+    color: var(--gray);
+    font-family: "Sinkin Sans 900 X Black";
+    font-size: .75rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 14px 10px 45px;
+    border: 0;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3); 
+    background-color: ghostwhite ;
+    color: #000; 
+    outline: none;
+    font-size: 16px;
+}
+
+
+.form-group input:focus {
+    border-bottom:3px solid var(--principal-color);
+}
+
+.form-group input:hover:not(:focus){
+    border-color: var(--default-color);
+}
+
+.form-group input::placeholder {
+    color: var(--default-color)
+}
+
+.error-text{
+    color:red;
+}

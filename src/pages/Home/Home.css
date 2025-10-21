@@ -5,11 +5,8 @@ body {
     background-color: var(--blanco);
 }
 
-main {
-    text-align: center; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around; 
+.home-main {
+    margin-top: 5rem;
 }
 
 h1 {
@@ -21,10 +18,12 @@ h2{
     font-family: "Sinkin Sans 900 X Black";
     font-size: 42px;
     color: var(--gray);
+    text-align: center;
 }
 
 h3{
-    color: var(--gray)
+    color: var(--gray);
+    text-align: center;
 }
 
 .section-content{

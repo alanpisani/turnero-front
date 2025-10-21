@@ -1,0 +1,22 @@
+select {
+    width: 100%;
+    padding: 10px 14px 10px 45px;
+    border: 2px solid rgba(0, 0, 0, 0.3); 
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255); 
+    color: #000; 
+    outline: none;
+    font-size: 16px;
+}
+
+select:focus {
+    outline:3px solid var(--principal-color);
+}
+
+select:hover:not(:focus){
+    border-color: var(--default-color);
+}
+
+select::placeholder {
+    color: var(--default-color)
+}

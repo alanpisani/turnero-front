@@ -1,27 +1,24 @@
-interface specialty{
-    title: string;
-    id: string;
-}
+import type NavItemType from "../types/Header/navItemType";
 
-export const navItems: specialty[] = [
+export const navItems: NavItemType[] = [
     {
         title: "¿Por qué elegirnos?",
-        id: "#why-choose-us"
+        navItemId: "#why-choose-us"
     },
     {
         title: "Sacá tu turno",
-        id: "#first-consult"
+        navItemId: "#first-consult"
     },
     {
         title: "Especialidades",
-        id: "#specialties"
+        navItemId: "#specialties"
     },
     {
         title: "Es simple",
-        id: "#its-simple"
+        navItemId: "#its-simple"
     },
     {
         title: "Preguntas frecuentes",
-        id: "#questions"
+        navItemId: "#questions"
     },   
 ];
