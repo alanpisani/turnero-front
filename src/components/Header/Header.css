@@ -12,8 +12,6 @@ nav {
     display: flex;
     font-family:"Sinkin Sans 400 Regular";
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
 }
 
 nav a{
@@ -24,7 +22,14 @@ nav a{
 nav ul {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    gap: 3rem;
     list-style: none;
     padding-right: 20px;
+}
+
+.algo{
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
 }

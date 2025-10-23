@@ -13,7 +13,7 @@ export function SignUpForm() {
 
 const onSubmit = async (data: SignUpFormType) => {
   try {
-    clearErrors(); // 🔥 limpia errores previos
+    clearErrors();
 
     const response = await fetch("http://localhost:5295/api/paciente", {
       method: "POST",
