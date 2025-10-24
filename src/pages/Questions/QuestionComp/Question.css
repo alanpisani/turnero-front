@@ -5,10 +5,12 @@
 }
 
 .question{
-    color: rgba(0, 0, 0, 0.9);
+    color: var(--gray);
+    font-weight: bold;
     font-size: 1.5rem;
 }
 
 .answer{
     color: var(--ultra-gray);
+    font-size: 1.25rem;
 }
