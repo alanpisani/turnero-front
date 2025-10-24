@@ -49,6 +49,7 @@ html, body, #root {
     --blanco: #fff;
     --default-color :#777;
     --gray: #3a3a3a;
+    --ultra-gray: #2a2a2a;
     --bkc-footer: #0a5151;
     --orange: #fd5b42;
 }
@@ -57,4 +58,8 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-around; 
+}
+
+.mt-10{
+    margin-top: 10rem;
 }

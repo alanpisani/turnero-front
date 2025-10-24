@@ -8,14 +8,14 @@ import LogContainer from "./LogContainer/LogContainer";
 export default function Header(){
     return (
         <header>
-            <nav> 
+            <nav>
                 <div className="algo">
-                    <a href="index.html">
-                        <Logo title="CLÍNICA" subtitle="DE VERDAD" />
-                    </a>
+    
+                    <Logo title="CLÍNICA" subtitle="DE VERDAD" />
+                    
                     <ul id="nav-list">
                         {navItems.map((item, index) => (
-                            <NavItem key= {index} title={item.title.toUpperCase()} navItemId={item.navItemId} />
+                            <NavItem key= {index} title={item.title.toUpperCase()} navItemId={item.navItemId} linkTo={ item.linkTo }/>
                         ))}
                     </ul>
                 </div>

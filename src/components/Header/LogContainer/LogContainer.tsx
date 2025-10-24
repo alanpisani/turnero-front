@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
 import "./LogContainer.css";
+import ActionalBtn from "../../shared/ActionalBtn/ActionalBtn";
+import { useAuth } from "../../../hooks/useAuth";
+
 
 export default function LogContainer(){
 
-    const token = localStorage.getItem("token");
-    const isLoggedIn: boolean = !!token;
+
+    const { isLoggedIn, user } = useAuth();
 
     return (
         
@@ -12,20 +14,18 @@ export default function LogContainer(){
             {
                 isLoggedIn ? (
                     <>
-                        <p>Bienvenido, Alan</p>
-                        <Link to="perfil">
-                            <button className="secondary-button">Mi perfil</button>
-                        </Link>
+                        <p>Bienvenido, {user?.nombre}</p>
+                        <div>
+                            <ActionalBtn linkTo="mi-perfil" isTertiary leyend="Mi perfil"/>
+                            <ActionalBtn linkTo="mis-turnos" leyend="Mis turnos"/>
+                            <ActionalBtn linkTo="/" leyend="Cerrar sesión" isTertiary onClick={() => localStorage.removeItem("token")}/>
+                        </div>
                     </>
                 )
                 : (
                     <>
-                        <Link to="/registrarse">
-                            <button className="secondary-button tertiary-button">Registrate</button>
-                        </Link>
-                        <Link to="/conectate">
-                            <button className="secondary-button">Conectate</button>
-                        </Link>
+                        <ActionalBtn linkTo="/registrarse" isTertiary={ true } leyend="Registrate" />
+                        <ActionalBtn linkTo="/conectate" isTertiary={ false } leyend="Conectate" />
                     </>
  
                 )

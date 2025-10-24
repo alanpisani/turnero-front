@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Logo.css"
 
 import logo from "./logo.png";
@@ -8,13 +9,17 @@ interface LogoProps{
 }
 
 function Logo( { title, subtitle }: LogoProps ){
-    return <div className="logo-container">
-        <img  className="logo" src={ logo } alt=""/>
-        <div className="logo-text-content">
-            <p>{ title }</p>
-            <p><strong>{ subtitle }</strong></p>
-        </div>
-    </div>
+    return (
+        <Link to='/'>
+            <div className="logo-container">
+                <img  className="logo" src={ logo } alt=""/>
+                <div className="logo-text-content">
+                    <p>{ title }</p>
+                    <p><strong>{ subtitle }</strong></p>
+                </div>
+            </div>
+        </Link>
+    );
 }
 
 export default Logo;

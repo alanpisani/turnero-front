@@ -1,0 +1,23 @@
+.questions-section{
+    display:flex;
+    justify-content: center;
+}
+
+.questions-big-container{
+    display: flex;
+    flex-flow: wrap column;
+    width: 70%;
+    gap: 3rem;
+}
+
+.questions-title-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.questions-container{
+    display: flex;
+    flex-direction: column;
+    gap:3rem;
+}

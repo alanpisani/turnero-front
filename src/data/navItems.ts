@@ -19,6 +19,7 @@ export const navItems: NavItemType[] = [
     },
     {
         title: "Preguntas frecuentes",
-        navItemId: "#questions"
+        navItemId: "#questions",
+        linkTo: "/preguntas"
     },   
 ];
