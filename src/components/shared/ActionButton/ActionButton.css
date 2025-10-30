@@ -1,0 +1,15 @@
+.action-button{
+    cursor: pointer;
+    padding: .5rem;
+    font-weight: bold;
+}
+
+.cancel-button{
+    color: var(--blanco);
+    background-color:#CC0000;
+}
+
+.normal-action-button{
+    color: var(--blanco);
+    background-color:#5cb85c;
+}

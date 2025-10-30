@@ -1,11 +1,12 @@
 import "./Btn.css";
 
 interface BtnProps{
-    label: string; 
+    label: string;
+    onClick?: ()=>void;
 }
 
-export function Btn({ label }: BtnProps){
-    return <button className="btn" >
+export function Btn({ label, onClick }: BtnProps){
+    return <button className="btn" onClick={ onClick }>
         { label }
     </button>
 }

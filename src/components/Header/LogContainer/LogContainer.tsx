@@ -24,8 +24,8 @@ export default function LogContainer(){
                 )
                 : (
                     <>
-                        <ActionalBtn linkTo="/registrarse" isTertiary={ true } leyend="Registrate" />
-                        <ActionalBtn linkTo="/conectate" isTertiary={ false } leyend="Conectate" />
+                        <ActionalBtn linkTo="/turnos" leyend="MIs turnos" />
+                        <ActionalBtn linkTo="/conectate" isTertiary leyend="Conectate" />
                     </>
  
                 )
