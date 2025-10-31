@@ -6,6 +6,7 @@ import ActionButton from "../../components/shared/ActionButton/ActionButton";
 import ActionalBtn from "../../components/shared/ActionalBtn/ActionalBtn";
 import type { ResponseProps } from "../../types/ResponseProps";
 import NewTurnForm from "./NewTurnForm/NewTurnForm";
+import FastSignUp from "./FastSignUp/FastSignUp";
 
 interface TurnoProp {
   idTurno: number;
@@ -15,7 +16,9 @@ interface TurnoProp {
 
 export default function MyTurns() {
   const [dni, setDni] = useState("");
-  const [view, setView] = useState<"consulta" | "nuevo-turno">("consulta");
+  const [view, setView] = useState<
+    "consulta" | "nuevo-turno" | "registro-rapido"
+  >("consulta");
   const [response, setResponse] = useState<ResponseProps<TurnoProp[]> | null>(
     null
   );
@@ -57,12 +60,32 @@ export default function MyTurns() {
       );
     }
 
+    if (view === "registro-rapido")
+      return (
+        <FastSignUp
+          dni={Number(dni)}
+          redirect={() => {
+            setResponse(null);
+            setView("consulta");
+          }}
+        />
+      );
+
     if (!response.success) {
       // Caso de error o paciente no encontrado
       return (
         <>
           <div className="no-paciente-container">
             <p>{response.message ?? "No se encontró el paciente."}</p>
+            <br />
+            <p>
+              ¿No estás registrado?{" "}
+              <ActionalBtn
+                leyend="Registrate ahora"
+                isTertiary
+                onClick={() => setView("registro-rapido")}
+              />{" "}
+            </p>
           </div>
           <DniForm handleSubmit={handleSubmit} dni={dni} setDni={setDni} />
         </>
