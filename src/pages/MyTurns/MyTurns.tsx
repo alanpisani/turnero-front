@@ -1,18 +1,12 @@
 import { useState } from "react";
 import "./MyTurns.css";
 import DniForm from "./DniForm/DniForm";
-import { Btn } from "../../components/shared/Btn/Btn";
-import ActionButton from "../../components/shared/ActionButton/ActionButton";
 import ActionalBtn from "../../components/shared/ActionalBtn/ActionalBtn";
 import type { ResponseProps } from "../../types/ResponseProps";
 import NewTurnForm from "./NewTurnForm/NewTurnForm";
 import FastSignUp from "./FastSignUp/FastSignUp";
-
-interface TurnoProp {
-  idTurno: number;
-  especialidad: string;
-  fecha: string;
-}
+import type { TurnoProp } from "../../types/MyTurns/turno";
+import TurnosListComponent from "./TurnosListComponent/TurnosListComponent";
 
 export default function MyTurns() {
   const [dni, setDni] = useState("");
@@ -94,37 +88,11 @@ export default function MyTurns() {
 
     //Caso de exito
     return (
-      <div className="turnos-list-container">
-        <p>{response.message}</p>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Especialidad</th>
-              <th>Fecha</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {response.data?.map((turno, index) => (
-              <tr key={index}>
-                <td>{turno.idTurno}</td>
-                <td>{turno.especialidad}</td>
-                <td>{turno.fecha}</td>
-                <td>
-                  <ActionButton leyend="Reprogramar" />
-                  <ActionButton leyend="Cancelar" isCancelButton />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <Btn
-          label="Quiero un nuevo turno"
-          onClick={() => setView("nuevo-turno")}
-        />
-        <ActionalBtn leyend="Volver a inicio" linkTo="/" isTertiary />
-      </div>
+      <TurnosListComponent
+        response={response}
+        onClick={() => setView("nuevo-turno")}
+        dniInput={dni}
+      />
     );
   }
 

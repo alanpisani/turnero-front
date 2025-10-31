@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode";
 export interface MyToken {
   id: string;
   email: string;
+  dni: string;
   rol: string;
   nombre: string;
   exp: number;

@@ -17,7 +17,7 @@ export default function LogContainer(){
                         <p>Bienvenido, {user?.nombre}</p>
                         <div>
                             <ActionalBtn linkTo="mi-perfil" isTertiary leyend="Mi perfil"/>
-                            <ActionalBtn linkTo="mis-turnos" leyend="Mis turnos"/>
+                            <ActionalBtn linkTo="turnos" leyend="Mis turnos"/>
                             <ActionalBtn linkTo="/" leyend="Cerrar sesión" isTertiary onClick={() => localStorage.removeItem("token")}/>
                         </div>
                     </>
