@@ -1,3 +1,4 @@
+// MyTurns.tsx
 import { useState } from "react";
 import "./MyTurns.css";
 import DniForm from "./DniForm/DniForm";
@@ -7,6 +8,7 @@ import NewTurnForm from "./NewTurnForm/NewTurnForm";
 import FastSignUp from "./FastSignUp/FastSignUp";
 import type { TurnoProp } from "../../types/MyTurns/turno";
 import TurnosListComponent from "./TurnosListComponent/TurnosListComponent";
+import { API_URL } from "../../config/apiConfig";
 
 export default function MyTurns() {
   const [dni, setDni] = useState("");
@@ -17,11 +19,10 @@ export default function MyTurns() {
     null
   );
 
-  async function handleSubmit(e: React.FormEvent): Promise<void> {
-    e.preventDefault();
-
+  // Función para consultar turnos por DNI
+  const fetchTurnos = async () => {
     try {
-      const res = await fetch(`http://localhost:5295/api/Turno/turnos/${dni}`);
+      const res = await fetch(`${API_URL}/Turno/turnos/${dni}`);
       const data = await res.json();
       setResponse(data);
 
@@ -31,6 +32,12 @@ export default function MyTurns() {
     } catch (error) {
       console.error("Error al buscar turnos:", error);
     }
+  };
+
+  // Wrapper para el submit del formulario (necesita el evento)
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    await fetchTurnos();
   }
 
   function renderContent() {
@@ -41,9 +48,9 @@ export default function MyTurns() {
       return (
         <div className="nuevo-turno-container">
           <h3>Nuevo turno</h3>
-
           <NewTurnForm
             dniPaciente={Number(dni)}
+            reload={fetchTurnos}
             redirect={() => setView("consulta")}
           />
           <ActionalBtn
@@ -66,7 +73,6 @@ export default function MyTurns() {
       );
 
     if (!response.success) {
-      // Caso de error o paciente no encontrado
       return (
         <>
           <div className="no-paciente-container">
@@ -86,12 +92,13 @@ export default function MyTurns() {
       );
     }
 
-    //Caso de exito
+    // Caso de éxito: lista de turnos
     return (
       <TurnosListComponent
         response={response}
         onClick={() => setView("nuevo-turno")}
         dniInput={dni}
+        reload={fetchTurnos}
       />
     );
   }

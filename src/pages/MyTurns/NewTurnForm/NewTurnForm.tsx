@@ -8,15 +8,18 @@ import FranjasInput from "./FranjasInput/FranjasInput";
 import { useEspecialidades } from "../../../hooks/useEspecialidades";
 import useProfesionales from "../../../hooks/useProfesionales";
 import useFranjas from "../../../hooks/useFranjas";
+import { API_URL } from "../../../config/apiConfig";
 
 interface NewTurnFormProp {
   dniPaciente: number;
   redirect: () => void;
+  reload: () => void
 }
 
 export default function NewTurnForm({
   dniPaciente,
   redirect,
+  reload
 }: NewTurnFormProp) {
   const [idEspecialidad, setIdEspecialidad] = useState<number | null>(null);
   const [profesionalSeleccionado, setProfesionalSeleccionado] =
@@ -53,7 +56,7 @@ export default function NewTurnForm({
     };
 
     try {
-      const response = await fetch("http://localhost:5295/api/turno/rapido", {
+      const response = await fetch(`${API_URL}/turno/rapido`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,6 +72,7 @@ export default function NewTurnForm({
 
       if (result.success) {
         alert("Turno registrado correctamente");
+        reload();
         redirect();
       } else {
         alert("No se pudo registrar el turno.");
