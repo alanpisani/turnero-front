@@ -2,6 +2,9 @@ import { useForm } from "react-hook-form";
 import ActionalBtn from "../../components/shared/ActionalBtn/ActionalBtn";
 import BasicHeader from "../../components/shared/BasicHeader/BasicHeader";
 import "./Login.css"
+import { API_URL } from "../../config/apiConfig";
+import { jwtDecode } from "jwt-decode";
+import type { MyToken } from "../../types/Login/MyToken";
 
 type LoginFormType = {
   email: string;
@@ -13,7 +16,7 @@ export default function Login(){
 
     const onSubmit = async (data: LoginFormType) => {
         try {
-            const response = await fetch("http://localhost:5295/api/auth/login", {
+            const response = await fetch(`${API_URL}/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
@@ -30,8 +33,10 @@ export default function Login(){
             localStorage.setItem("token", result.token);
 
             alert("Inicio de sesión exitoso!");
-            // redirigir si querés
-            window.location.href = "/";
+
+            const token = jwtDecode<MyToken>(result.token)
+            
+            window.location.href = token.rol == "Profesional" ? '/panel/profesional' : '/';
         } catch {
         
             alert("No se pudo conectar con el servidor");
