@@ -3,7 +3,7 @@ import "./ActionButton.css";
 interface ActionButtonProps {
   leyend: string;
   isCancelButton?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function ActionButton({

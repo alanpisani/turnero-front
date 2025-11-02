@@ -1,15 +1,27 @@
 .action-button{
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
     cursor: pointer;
-    padding: .5rem;
-    font-weight: bold;
+    transition: background 0.2s ease;
+    margin-right: 5px;
 }
 
 .cancel-button{
     color: var(--blanco);
-    background-color:#CC0000;
+    background-color:var(--rojo);
+}
+
+.cancel-button:hover{
+    background-color: #b91c1c;
 }
 
 .normal-action-button{
     color: var(--blanco);
-    background-color:#5cb85c;
+    background-color:var(--verde);
+}
+
+.normal-action-button:hover{
+    background-color: #15803d;
 }

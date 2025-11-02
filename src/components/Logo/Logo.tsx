@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "./Logo.css"
-
 import logo from "./logo.png";
 
 interface LogoProps{
@@ -10,7 +9,7 @@ interface LogoProps{
 
 function Logo( { title, subtitle }: LogoProps ){
     return (
-        <Link to='/'>
+        <Link to='/' className="logo-link">
             <div className="logo-container">
                 <img  className="logo" src={ logo } alt=""/>
                 <div className="logo-text-content">

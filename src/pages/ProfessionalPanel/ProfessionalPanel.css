@@ -1,0 +1,21 @@
+.professional-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.panel-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.panel-content {
+  flex: 1;
+  background-color: #f7f7f9;
+  padding: 2rem;
+  overflow-y: auto;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+}

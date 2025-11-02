@@ -52,6 +52,9 @@ html, body, #root {
     --ultra-gray: #2a2a2a;
     --bkc-footer: #0a5151;
     --orange: #fd5b42;
+    --rojo: #dc2626;
+    --verde: #16a34a;
+    --fadeIn: fadeIn .5s ease;
 }
 
 main{
@@ -62,4 +65,9 @@ main{
 
 .mt-10{
     margin-top: 10rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
