@@ -2,13 +2,13 @@ import "./Home.css";
 
 import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
-import { HeroSection } from "../../components/Home/HeroSection/HeroSection";
+import { HeroSection } from "./HeroSection/HeroSection";
 import { heroItems } from "../../data/heroItems";
-import { WhyChooseUsSection } from "../../components/Home/WhyChooseUsSection/WhyChooseUsSection";
+import { WhyChooseUsSection } from "./WhyChooseUsSection/WhyChooseUsSection";
 import { whyChooseUsItems } from "../../data/whyChooseUsItems";
-import { FirstConsultSection } from "../../components/Home/FirstConsultSection/FirstConsultSection";
-import { SpecialtiesSection } from "../../components/Home/SpecialtiesSection/SpecialtiesSection";
-import { ItsSimpleSection } from "../../components/Home/ItsSimpleSection/ItsSimpleSection";
+import { SpecialtiesSection } from "./SpecialtiesSection/SpecialtiesSection";
+import { ItsSimpleSection } from "./ItsSimpleSection/ItsSimpleSection";
+import { FirstConsultSection } from "./FirstConsultSection/FirstConsultSection";
 
 export function Home() {
   return (

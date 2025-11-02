@@ -1,4 +1,4 @@
-import { Btn } from "../../shared/Btn/Btn";
+import { Btn } from "../../../components/shared/Btn/Btn";
 import "./FirstConsultSection.css";
 
 import img2 from "./img-2.png";
