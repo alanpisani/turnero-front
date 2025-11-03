@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     gap:3rem;
-    animation: var(--fadeIn)
 }
 
 .my-turns-input-container{

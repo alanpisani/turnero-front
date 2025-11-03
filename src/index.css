@@ -55,6 +55,7 @@ html, body, #root {
     --rojo: #dc2626;
     --verde: #16a34a;
     --fadeIn: fadeIn .5s ease;
+    --opacityIn: opacityIn .5s ease;
 }
 
 main{
@@ -70,4 +71,9 @@ main{
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes opacityIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

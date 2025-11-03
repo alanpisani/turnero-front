@@ -14,23 +14,30 @@ export function isTokenExpired(token: string): boolean {
 
 export function useAuth() {
   const [user, setUser] = useState<MyToken | null>(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-    
-        const token = localStorage.getItem("token");
-        if (!token) return setUser(null);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-        if (isTokenExpired(token)) {
-            localStorage.removeItem("token");
-            setUser(null);
-        } else {
-            setUser(jwtDecode<MyToken>(token));
-        }
-        
-    }, []);
+    if (!token) {
+      setUser(null);
+      setLoading(false);
+      return;
+    }
+
+    if (isTokenExpired(token)) {
+      localStorage.removeItem("token");
+      setUser(null);
+    } else {
+      setUser(jwtDecode<MyToken>(token));
+    }
+
+    setLoading(false);
+  }, []);
 
   return {
     isLoggedIn: !!user,
     user,
+    loading,
   };
 }

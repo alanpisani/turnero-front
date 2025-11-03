@@ -5,6 +5,11 @@ import { useAuth } from "../../../hooks/useAuth";
 export default function LogContainer() {
   const { isLoggedIn, user } = useAuth();
 
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
+
   return (
     <div className="log-container">
       {isLoggedIn ? (
@@ -17,7 +22,7 @@ export default function LogContainer() {
               linkTo="/"
               leyend="Cerrar sesión"
               isTertiary
-              onClick={() => localStorage.removeItem("token")}
+              onClick={handleLogOut}
             />
           </div>
         </>

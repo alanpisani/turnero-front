@@ -1,23 +1,27 @@
-.turnos-list-container table{
-    border:1px solid red;
-    width: 100%;
-    text-align: center;
-    border-collapse: collapse;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 12px;
-    overflow: hidden; 
+.turnos-list-container {
+  animation: var(--opacityIn);
 }
 
-.turnos-list-container thead{
-    background: #5cb85c;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.turnos-list-container table {
+  border: 1px solid red;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.turnos-list-container th{
-    padding: 1rem;
-    font-size: 1rem;
+.turnos-list-container thead {
+  background: #5cb85c;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.turnos-list-container th {
+  padding: 1rem;
+  font-size: 1rem;
 }
 
 .turnos-list-container tbody tr {

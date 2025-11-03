@@ -15,12 +15,12 @@
     flex-direction: column;
     gap: 3rem;
     width: 35%;
-    animation: var(--fadeIn)
 }
 
 .no-paciente-container{
     background-color: #fcf8e3;
     padding:1rem;
+    animation: var(--opacityIn)
 }
 
 .no-paciente-container p{
