@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
 import "./Dashboard.css";
-import SideMenu from "../ProfessionalPanel/SideMenu/SideMenu";
 import { useAuth } from "../../hooks/useAuth";
 import type { sideMenuDataProps } from "../../types/SideMenuProps";
+import SideMenu from "./ProfessionalPanel/SideMenu/SideMenu";
 
 interface DashboardProps {
   rol: string;

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./SideMenu.css"
-import type { sideMenuDataProps } from "../../../types/SideMenuProps";
+import type { sideMenuDataProps } from "../../../../types/SideMenuProps";
 
 interface SideMenuProps{
   sideMenuData: sideMenuDataProps[];

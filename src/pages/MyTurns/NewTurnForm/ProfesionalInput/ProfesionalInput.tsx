@@ -6,6 +6,7 @@ interface Props {
   profesionalSeleccionado: Profesional | null;
   setProfesionalSeleccionado: (p: Profesional | null) => void;
   onReset: () => void;
+  hasLabel?: boolean
 }
 
 export default function ProfesionalInput({
@@ -14,12 +15,13 @@ export default function ProfesionalInput({
   profesionalSeleccionado,
   setProfesionalSeleccionado,
   onReset,
+  hasLabel
 }: Props) {
   if (!idEspecialidad) return null;
 
   return (
     <label>
-      Profesional:
+      {hasLabel ? "Profesional:" : ""}
       <select
         value={profesionalSeleccionado?.nombreProfesional ?? ""}
         onChange={(e) => {
@@ -31,7 +33,7 @@ export default function ProfesionalInput({
         <option value="">Seleccione profesional</option>
         {profesionales.map((prof) => (
           <option key={prof.idUsuario} value={prof.nombreProfesional}>
-            {prof.nombreProfesional}
+            Dr {prof.nombreProfesional} {prof.apellidoProfesional}
           </option>
         ))}
       </select>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ActionalBtn from "../../../components/shared/ActionalBtn/ActionalBtn";
+import { API_URL } from "../../../config/apiConfig";
 
 interface FastSignUpProps {
   dni: number;
@@ -20,7 +21,7 @@ export default function FastSignUp({ dni, redirect }: FastSignUpProps) {
 
     try {
       const response = await fetch(
-        "http://localhost:5295/api/paciente/rapido",
+        `${API_URL}/paciente/rapido`,
         {
           method: "POST",
           headers: {

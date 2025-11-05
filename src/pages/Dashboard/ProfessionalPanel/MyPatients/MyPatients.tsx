@@ -1,4 +1,4 @@
-import ActionButton from "../../../components/shared/ActionButton/ActionButton";
+import ActionButton from "../../../../components/shared/ActionButton/ActionButton";
 import "./MyPatients.css"
 
 export default function MyPatients() {

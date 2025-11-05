@@ -4,6 +4,7 @@ interface FranjasInputProps {
   setFranjaSeleccionada: React.Dispatch<React.SetStateAction<string>>;
   franjas: string[];
   fechaSeleccionada: Date | null;
+  hasLabel?: boolean
 }
 
 export default function FranjasInput({
@@ -12,12 +13,13 @@ export default function FranjasInput({
   setFranjaSeleccionada,
   franjas,
   fechaSeleccionada,
+  hasLabel
 }: FranjasInputProps) {
   return (
     <>
       {condicion && (
         <label>
-          Horario disponible:
+          {hasLabel ? "Horario disponible:" : ""}
           <select
             value={franjaSeleccionada}
             onChange={(e) => setFranjaSeleccionada(e.target.value)}

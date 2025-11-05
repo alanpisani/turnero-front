@@ -5,6 +5,7 @@ interface EspecialidadInputProps {
   setIdEspecialidad: React.Dispatch<React.SetStateAction<number | null>>;
   especialidades: Especialidad[];
   onReset: () => void;
+  hasLabel?: boolean;
 }
 
 export default function EspecialidadInput({
@@ -12,10 +13,11 @@ export default function EspecialidadInput({
   setIdEspecialidad,
   especialidades,
   onReset,
+  hasLabel
 }: EspecialidadInputProps) {
   return (
     <label>
-      Especialidad:
+      {hasLabel ? "Especialidad:" : ""}
       <select
         value={idEspecialidad ?? ""}
         onChange={(e) => {

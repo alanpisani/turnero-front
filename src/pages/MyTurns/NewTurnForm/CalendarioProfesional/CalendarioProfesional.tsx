@@ -2,17 +2,22 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import type { ResponseProps } from "../../../../types/ResponseProps";
+import { API_URL } from "../../../../config/apiConfig";
 
 interface CalendarioProfesionalProps {
   idUsuario: number | null;
   disabled: boolean;
   onDateChange: (date: Date | null) => void;
+  hasLabel?: boolean
+  isInline?: boolean
 }
 
 export default function CalendarioProfesional({
   idUsuario,
   disabled,
   onDateChange,
+  hasLabel,
+  isInline
 }: CalendarioProfesionalProps) {
   const [availableDays, setAvailableDays] = useState<Date[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -26,7 +31,7 @@ export default function CalendarioProfesional({
     async function fetchDisponibilidad() {
       try {
         const res = await fetch(
-          `http://localhost:5295/api/profesional/${idUsuario}/disponibilidad`
+          `${API_URL}/profesional/${idUsuario}/disponibilidad`
         );
         const data: ResponseProps<string[]> = await res.json();
 
@@ -63,7 +68,9 @@ export default function CalendarioProfesional({
 
   return (
     <div>
-      <label>Seleccioná un día disponible:</label>
+             
+      
+      <label>{ hasLabel ? "Seleccioná un día disponible:" : ""}</label>
       <DatePicker
         selected={selectedDate}
         onChange={handleChange}
@@ -72,7 +79,7 @@ export default function CalendarioProfesional({
         placeholderText={
           disabled ? "Seleccioná un profesional primero" : "Elegí una fecha"
         }
-        inline
+        inline={isInline}
         disabled={disabled}
       />
     </div>

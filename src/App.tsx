@@ -1,19 +1,23 @@
 import { Route, Routes } from 'react-router-dom'
 import { Home } from './pages/Home/Home'
-import { SignUp } from './pages/SignUp/SignUp'
 import Login from './pages/Login/Login'
 import Questions from './pages/Questions/Questions'
 import MyTurns from './pages/MyTurns/MyTurns'
 import Dashboard from './pages/Dashboard/Dashboard'
-import TurnsOfTheDay from './pages/ProfessionalPanel/TurnsOfTheDay/TursOfTheDay'
-import MyPatients from './pages/ProfessionalPanel/MyPatients/MyPatients'
-import ClinicalRecords from './pages/ProfessionalPanel/ClinicalRecords/ClinicalRecords'
-import ProfessionalProfile from './pages/ProfessionalPanel/ProfessionalProfile/ProfessionalProfile'
-import IntroProfessionalPanel from './pages/ProfessionalPanel/IntroProfessionalPanel/IntroProfessionalPanel'
 import Forbidden from './pages/Forbidden/Forbidden'
-import { recepcionistSideMenuData } from './data/SideMenu/recepcionistSideMenuData'
+import TurnsOfTheDay from './pages/Dashboard/ProfessionalPanel/TurnsOfTheDay/TursOfTheDay'
+import ClinicalRecords from './pages/Dashboard/ProfessionalPanel/ClinicalRecords/ClinicalRecords'
 import { professionalSideMenuData } from './data/SideMenu/professionalSideMenuData'
+import MyPatients from './pages/Dashboard/ProfessionalPanel/MyPatients/MyPatients'
+import ProfessionalProfile from './pages/Dashboard/ProfessionalPanel/ProfessionalProfile/ProfessionalProfile'
+import IntroProfessionalPanel from './pages/Dashboard/ProfessionalPanel/IntroProfessionalPanel/IntroProfessionalPanel'
+import { recepcionistSideMenuData } from './data/SideMenu/recepcionistSideMenuData'
 import { adminSideMenuData } from './data/SideMenu/adminSideMenuData'
+import UserManagement from './pages/Dashboard/AdminPanel/UserManagement/UserManagement'
+import ProfessionalManagement from './pages/Dashboard/AdminPanel/ProfessionalManagement/ProfessionalManagement'
+import SpecialtyManagement from './pages/Dashboard/AdminPanel/SpecialtyManagement/SpecialtyManagement'
+import RolesManagement from './pages/Dashboard/AdminPanel/RolesManagement/RolesManagement'
+
 
 function App() {
 
@@ -22,7 +26,6 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/forbidden" element={<Forbidden />} />
       <Route path="/turnos" element={<MyTurns/>} />
-      <Route path="/registrarse" element={<SignUp title='Registrate'/>} />
       <Route path="/conectate" element={<Login />} />
       <Route path="/preguntas" element={<Questions />} />
       <Route path="/panel/profesional" element={<Dashboard rol="Profesional" sideMenuData={professionalSideMenuData}/>}>
@@ -33,10 +36,17 @@ function App() {
         <Route path="" element={<IntroProfessionalPanel />}/>
       </Route>
       <Route path="/panel/recepcionista" element={<Dashboard rol="Recepcionista" sideMenuData={recepcionistSideMenuData} />}>
+        
         { /*ACA IRIAN LO DEL RECEPCIONISTA*/}
+
       </Route>
-            <Route path="/panel/admin" element={<Dashboard rol="Admin" sideMenuData={adminSideMenuData} />}>
-        { /*ACA IRIAN LO DEL ADMIN*/}
+      <Route path="/panel/admin" element={<Dashboard rol="Admin" sideMenuData={adminSideMenuData} />}>
+        
+        <Route path="gestion-usuarios" element={ <UserManagement />} />
+        <Route path="gestion-profesionales" element={ <ProfessionalManagement />} />
+        <Route path="gestion-especialidades" element={ <SpecialtyManagement />} />
+        <Route path="gestion-roles" element={ <RolesManagement />} />
+      
       </Route>
     </Routes>
   )

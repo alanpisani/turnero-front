@@ -1,4 +1,4 @@
-import Modal from "../../../components/shared/Modal/Modal";
+import Modal from "../../../../components/shared/Modal/Modal";
 import "./TurnsOfTheDay.css";
 
 export default function TurnsOfTheDay() {
