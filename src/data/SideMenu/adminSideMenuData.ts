@@ -14,7 +14,7 @@ export const adminSideMenuData: sideMenuDataProps[] = [
     name: "Gestión de especialidades",
   },
   {
-    to: "gestion-roles",
-    name: "Gestión de roles",
+    to: "crear-recepcionista",
+    name: "Crear Recepcionista",
   },
 ];

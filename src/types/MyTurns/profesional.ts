@@ -3,4 +3,5 @@ export default interface Profesional {
   nombreProfesional: string;
   apellidoProfesional: string;
   matricula: number;
+  isActive: boolean;
 }

@@ -5,7 +5,7 @@ import Questions from './pages/Questions/Questions'
 import MyTurns from './pages/MyTurns/MyTurns'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Forbidden from './pages/Forbidden/Forbidden'
-import TurnsOfTheDay from './pages/Dashboard/ProfessionalPanel/TurnsOfTheDay/TursOfTheDay'
+import TurnsOfTheDay from './pages/Dashboard/ProfessionalPanel/TurnsOfTheDay/TurnsOfTheDay'
 import ClinicalRecords from './pages/Dashboard/ProfessionalPanel/ClinicalRecords/ClinicalRecords'
 import { professionalSideMenuData } from './data/SideMenu/professionalSideMenuData'
 import MyPatients from './pages/Dashboard/ProfessionalPanel/MyPatients/MyPatients'
@@ -16,8 +16,9 @@ import { adminSideMenuData } from './data/SideMenu/adminSideMenuData'
 import UserManagement from './pages/Dashboard/AdminPanel/UserManagement/UserManagement'
 import ProfessionalManagement from './pages/Dashboard/AdminPanel/ProfessionalManagement/ProfessionalManagement'
 import SpecialtyManagement from './pages/Dashboard/AdminPanel/SpecialtyManagement/SpecialtyManagement'
-import RolesManagement from './pages/Dashboard/AdminPanel/RolesManagement/RolesManagement'
-
+import CreateRecepcionistSection from './pages/Dashboard/AdminPanel/CreateRecepcionistSection/CreateRecepcionistSection'
+import SolicitarTurno from './pages/Dashboard/RecepcionistPanel/SolicitarTurno/SolicitarTurno'
+import HistorialTurnos from './pages/Dashboard/RecepcionistPanel/HistorialTurnos/HistorialTurnos'
 
 function App() {
 
@@ -37,7 +38,8 @@ function App() {
       </Route>
       <Route path="/panel/recepcionista" element={<Dashboard rol="Recepcionista" sideMenuData={recepcionistSideMenuData} />}>
         
-        { /*ACA IRIAN LO DEL RECEPCIONISTA*/}
+        <Route path='/panel/recepcionista/solicitar-turno' element={ <SolicitarTurno />} />
+        <Route path='/panel/recepcionista/historial-turnos' element={ <HistorialTurnos />} />
 
       </Route>
       <Route path="/panel/admin" element={<Dashboard rol="Admin" sideMenuData={adminSideMenuData} />}>
@@ -45,7 +47,7 @@ function App() {
         <Route path="gestion-usuarios" element={ <UserManagement />} />
         <Route path="gestion-profesionales" element={ <ProfessionalManagement />} />
         <Route path="gestion-especialidades" element={ <SpecialtyManagement />} />
-        <Route path="gestion-roles" element={ <RolesManagement />} />
+        <Route path="crear-recepcionista" element={ <CreateRecepcionistSection />} />
       
       </Route>
     </Routes>

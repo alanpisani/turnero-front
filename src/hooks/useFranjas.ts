@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../config/apiConfig";
 
 export default function useFranjas(
   idProfesional: number | null,
@@ -13,22 +14,22 @@ export default function useFranjas(
     }
 
     const fechaISO = fechaSeleccionada.toISOString().split("T")[0]; // yyyy-mm-dd
-    const url = `http://localhost:5295/api/profesional/${idProfesional}/franjas?fecha=${fechaISO}`;
+    const url = `${API_URL}/profesional/${idProfesional}/franjas?fecha=${fechaISO}`;
 
     fetch(url)
-      .then((res) => res.text()) // obtenemos texto crudo para mayor control
+      .then((res) => res.text()) 
       .then((text) => {
         try {
           const json = JSON.parse(text);
           console.log("JSON parseado:", json);
 
-          // Si el backend devuelve directamente un array de strings
+          
           if (Array.isArray(json)) {
             setFranjas(json);
             return;
           }
 
-          // Si usa ResponseProps con success/data
+          
           if (json.success && Array.isArray(json.data)) {
             setFranjas(json.data);
             return;

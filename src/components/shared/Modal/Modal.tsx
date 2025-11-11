@@ -15,8 +15,14 @@ export default function Modal({ triggerText, children }: ModalProps) {
 
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
-        <Dialog.Content className="dialog-content">
+        <Dialog.Content
+          className="dialog-content"
+          aria-label="Modal genérico" // 👈 evita el warning del título
+          aria-describedby={undefined} // 👈 evita el warning de descripción
+        >
+          
           {children}
+
           <Dialog.Close asChild>
             <button>Cerrar</button>
           </Dialog.Close>

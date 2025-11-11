@@ -17,22 +17,25 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const checkAuth = () => {
+      const token = localStorage.getItem("token");
 
-    if (!token) {
-      setUser(null);
+      if (!token || isTokenExpired(token)) {
+        localStorage.removeItem("token");
+        setUser(null);
+      } else {
+        try {
+          setUser(jwtDecode<MyToken>(token));
+        } catch {
+          localStorage.removeItem("token");
+          setUser(null);
+        }
+      }
+
       setLoading(false);
-      return;
-    }
+    };
 
-    if (isTokenExpired(token)) {
-      localStorage.removeItem("token");
-      setUser(null);
-    } else {
-      setUser(jwtDecode<MyToken>(token));
-    }
-
-    setLoading(false);
+    checkAuth();
   }, []);
 
   return {

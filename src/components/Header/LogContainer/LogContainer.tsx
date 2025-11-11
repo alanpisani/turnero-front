@@ -12,12 +12,11 @@ export default function LogContainer() {
 
   return (
     <div className="log-container">
-      {isLoggedIn ? (
+      {(isLoggedIn && user?.rol == "Paciente") ? (
         <>
           <p>Bienvenido, {user?.nombre}</p>
           <div>
-            <ActionalBtn linkTo="mi-perfil" isTertiary leyend="Mi perfil" />
-            <ActionalBtn linkTo="turnos" leyend="Mis turnos" />
+            <ActionalBtn linkTo="/turnos" leyend="Mis turnos" />
             <ActionalBtn
               linkTo="/"
               leyend="Cerrar sesión"
@@ -27,10 +26,9 @@ export default function LogContainer() {
           </div>
         </>
       ) : (
-        <>
-          <ActionalBtn linkTo="/turnos" leyend="MIs turnos" />
+        
           <ActionalBtn linkTo="/conectate" isTertiary leyend="Conectate" />
-        </>
+        
       )}
     </div>
   );

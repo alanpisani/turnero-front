@@ -54,8 +54,8 @@ export default function SignUpForm() {
       apellido: formData.apellido,
       dni: Number(formData.documento),
       email: formData.correo,
-      contrasenia: "string", // o campo real si tenés input
-      contraseniaRepetida: "string",
+      contrasenia: formData.contrasenia,
+      contraseniaRepetida: formData.contraseniaRepetida,
       isComplete: true,
       telefono: formData.celular,
       turno: {
@@ -75,7 +75,6 @@ export default function SignUpForm() {
 
       const data = await response.json();
 
-      // si tu backend devuelve Success=false con código 200, hay que revisar eso también
       if (!response.ok || data.success === false) {
         console.error("Error del servidor:", data);
         alert(
