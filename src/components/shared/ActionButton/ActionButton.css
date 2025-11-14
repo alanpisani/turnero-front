@@ -1,12 +1,13 @@
 .disable-btn,
 .enable-btn,
 .create-btn {
-  padding: 6px 14px;
+  padding: 60px 14px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
   transition: background 0.3s;
+  align-self: center;
 }
 
 .disable-btn {

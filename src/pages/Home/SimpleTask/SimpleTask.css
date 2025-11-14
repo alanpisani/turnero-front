@@ -12,4 +12,12 @@
     border-radius: 100%;
     width: 100px;
     height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-icon-container img{
+    width:50%;
+    height: 50%
 }

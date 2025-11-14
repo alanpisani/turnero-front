@@ -13,15 +13,14 @@ export default function ActionButton({
   isCreateButton,
   onClick,
 }: ActionButtonProps) {
+  const classButton = isCancelButton
+    ? "disable-btn"
+    : isCreateButton
+    ? "create-btn"
+    : "enable-btn";
+
   return (
-    <button
-      className={
-        (isCancelButton ? "disable-btn" : "enable-btn") +
-        " " +
-        (isCreateButton ? "create-btn" : "enable-btn")
-      }
-      onClick={onClick}
-    >
+    <button className={classButton} onClick={onClick}>
       {leyend}
     </button>
   );

@@ -8,11 +8,13 @@ interface ActionalBtnProps{
     onClick?: ()=> void;
 }
 
-export default function ActionalBtn({ linkTo,  isTertiary, leyend, onClick }: ActionalBtnProps){
-
-    const button = <button onClick={ onClick } className={"secondary-button " + (isTertiary ? "tertiary-button" : "")}>{ leyend }</button>
+export default function ActionalBtn({ linkTo, isTertiary, leyend, onClick }: ActionalBtnProps) {
     
-    return linkTo ? <Link to={ linkTo }>{ button }</Link> : button;
+    const classActional = "secondary-button " + (isTertiary ? "tertiary-button" : "")
+
+    const button = <button onClick={ onClick } className={classActional}>{ leyend }</button>
+    
+    return linkTo ? <Link to={ linkTo } className={ classActional }>{ leyend }</Link> : button;
 
 
 }

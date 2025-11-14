@@ -14,7 +14,7 @@ export function ItsSimpleSection( { title }: ItsSimpleSectionProps ){
                 <div className="es-simple-container">
                     {
                         simpleTasksData.map( (task, index) => (
-                            <SimpleTask key={index} title={task.title} />
+                            <SimpleTask key={index} title={task.title} img={task.img} />
                         ) )
                     }
                 </div>
