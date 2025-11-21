@@ -46,3 +46,8 @@
 .login-form-input-container input:hover:not(:focus){
     border-color: var(--default-color)
 }
+
+.error-input{
+    color: red;
+    font-size: 0.75rem;
+}

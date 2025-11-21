@@ -22,7 +22,7 @@ export function FirstConsultSection() {
                 </Link>
               </p>
             </div>
-          ) : !isLoggedIn && user?.rol == "Paciente" ? (
+          ) : !isLoggedIn ? (
             <div className="consulta-text-container">
               <p>¿Ya estás registrado?</p>
               <p>
