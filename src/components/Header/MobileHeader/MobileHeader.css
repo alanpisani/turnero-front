@@ -1,0 +1,35 @@
+.mobile-nav{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--blanco);
+}
+
+.hamburguesa{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 20px
+}
+
+.hamburguesa span{
+    height: 3px;
+    background-color: var(--principal-color);
+    margin: 2px 0;
+}
+
+.mobile-nav-items{
+    border:1px solid red;
+    position:absolute;
+    top:4.5rem;
+    right:0;
+}
+
+.mobile-nav-items ul{
+    flex-direction: column;
+}
+
+.mobile-nav-items.goodbye{
+    display: none;
+}

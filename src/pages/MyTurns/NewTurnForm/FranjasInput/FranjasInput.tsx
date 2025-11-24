@@ -4,7 +4,7 @@ interface FranjasInputProps {
   setFranjaSeleccionada: React.Dispatch<React.SetStateAction<string>>;
   franjas: string[];
   fechaSeleccionada: Date | null;
-  hasLabel?: boolean
+  hasLabel?: boolean;
 }
 
 export default function FranjasInput({
@@ -13,30 +13,34 @@ export default function FranjasInput({
   setFranjaSeleccionada,
   franjas,
   fechaSeleccionada,
-  hasLabel
+  hasLabel,
 }: FranjasInputProps) {
   return (
-    <>
-      {condicion && (
-        <label>
-          {hasLabel ? "Horario disponible:" : ""}
-          <select
-            value={franjaSeleccionada}
-            onChange={(e) => setFranjaSeleccionada(e.target.value)}
-          >
-            <option value="">Seleccioná un horario</option>
-            {franjas.map((franja, idx) => (
-              <option key={idx} value={franja}>
-                {franja}
-              </option>
-            ))}
-          </select>
-        </label>
-      )}
+    <label>
+      {hasLabel ? "Horario disponible:" : ""}
 
-      {fechaSeleccionada && franjas.length === 0 && (
+      <select
+        disabled={!condicion}
+        value={franjaSeleccionada}
+        onChange={(e) => setFranjaSeleccionada(e.target.value)}
+      >
+        <option value="">
+          {!condicion
+            ? "Seleccione primero un profesional"
+            : "Seleccioná un horario"}
+        </option>
+
+        {condicion &&
+          franjas.map((franja, idx) => (
+            <option key={idx} value={franja}>
+              {franja}
+            </option>
+          ))}
+      </select>
+
+      {fechaSeleccionada && franjas.length === 0 && condicion && (
         <p>No hay horarios disponibles para esta fecha.</p>
       )}
-    </>
+    </label>
   );
 }

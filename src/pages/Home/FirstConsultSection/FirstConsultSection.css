@@ -1,11 +1,11 @@
-.primera-consulta-container{
+.primera-consulta-container {
     background-image: url("./bk-01.jpg");
     height: 375px;
     display: flex;
     justify-content: center;
 }
 
-.consulta-content{
+.consulta-content {
     position: relative;
     display: flex;
     justify-content: end;
@@ -13,34 +13,53 @@
     width: 75%;
 }
 
-.primera-consulta-container img{
+.primera-consulta-container img {
     position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
-    
+
 }
 
-.consulta-text-container{
+.consulta-text-container {
     display: flex;
     flex-direction: column;
 }
 
-.primera-consulta-container p{
+.primera-consulta-container p {
     font-family: "Sinkin Sans 900 X Black";
     font-size: 37.5px;
     color: var(--blanco);
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
 }
 
-.primera-consulta-container .conectate{
-    color:var(--blanco);
-    background-color: var(--orange);
-    text-decoration: 0;
-    font-weight: bold;
+.primera-consulta-container .conectate {
+    color: var(--blanco);
+    text-decoration: none;
+    bordeR:1px solid var(--blanco);
     padding: 0.5rem 1.5rem;
-    border-radius:20px
+    background-color: var(--principal-color);
+}
+
+.primera-consulta-container .conectate:hover {
+    background-color: var(--default-color);
+}
+
+@media (max-width: 768px) {
+    .consulta-content {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .primera-consulta-container img {
+        display: none;
+    }
+
+    .primera-consulta-container p {
+        font-size: 1.75rem;
+        text-align: center;
+    }
 }

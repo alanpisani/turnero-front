@@ -8,8 +8,8 @@ interface CalendarioProfesionalProps {
   idUsuario: number | null;
   disabled: boolean;
   onDateChange: (date: Date | null) => void;
-  hasLabel?: boolean
-  isInline?: boolean
+  hasLabel?: boolean;
+  isInline?: boolean;
 }
 
 export default function CalendarioProfesional({
@@ -17,12 +17,15 @@ export default function CalendarioProfesional({
   disabled,
   onDateChange,
   hasLabel,
-  isInline
+  isInline,
 }: CalendarioProfesionalProps) {
   const [availableDays, setAvailableDays] = useState<Date[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   useEffect(() => {
+    setSelectedDate(null);
+    onDateChange(null);
+
     if (!idUsuario) {
       setAvailableDays([]);
       return;
@@ -51,7 +54,7 @@ export default function CalendarioProfesional({
     }
 
     fetchDisponibilidad();
-  }, [idUsuario]);
+  }, [idUsuario, onDateChange]);
 
   const handleChange = (date: Date | null) => {
     setSelectedDate(date);
@@ -68,9 +71,8 @@ export default function CalendarioProfesional({
 
   return (
     <div>
-             
-      
-      <label>{ hasLabel ? "Seleccioná un día disponible:" : ""}</label>
+      <label>{hasLabel ? "Seleccioná un día disponible:" : ""}</label>
+
       <DatePicker
         selected={selectedDate}
         onChange={handleChange}

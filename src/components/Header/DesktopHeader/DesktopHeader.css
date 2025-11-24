@@ -1,0 +1,35 @@
+header{
+    position:fixed;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 0 15px var(--default-color);
+    width: 100%;
+}
+
+header nav {
+    background-color: var(--blanco);
+    padding: 20px 70px;
+    display: flex;
+    font-family:"Sinkin Sans 400 Regular";
+    align-items: center;
+}
+
+header nav a{
+    text-decoration: none;
+    color: var(--default-color);
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    list-style: none;
+    padding-right: 20px;
+}
+
+.header-nav{
+    display: flex;
+    flex: 1;
+    gap:5rem;
+}

@@ -1,26 +1,21 @@
-import "./Header.css"
+import "./Header.css";
 
-import Logo from "../Logo/Logo";
-import { navItems } from "../../data/navItems";
-import NavItem from "./NavItem/NavItem";
-import LogContainer from "./LogContainer/LogContainer";
+import { useEffect, useState } from "react";
+import DesktopHeader from "./DesktopHeader/DesktopHeader";
+import MobileHeader from "./MobileHeader/MobileHeader";
 
-export default function Header(){
-    return (
-        <header>
-            <nav>
-                <div className="algo">
-    
-                    <Logo title="CLÍNICA" subtitle="DE VERDAD" />
-                    
-                    <ul id="nav-list">
-                        {navItems.map((item, index) => (
-                            <NavItem key= {index} title={item.title.toUpperCase()} navItemId={item.navItemId} linkTo={ item.linkTo }/>
-                        ))}
-                    </ul>
-                </div>
-                <LogContainer />
-            </nav>
-        </header>
-    );
+export default function Header() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleResize = () => setIsMobile(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
+
+  return <header>{!isMobile ? <DesktopHeader /> : <MobileHeader />}</header>;
 }

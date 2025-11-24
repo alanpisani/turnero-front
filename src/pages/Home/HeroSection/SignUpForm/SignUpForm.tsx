@@ -76,7 +76,6 @@ export default function SignUpForm() {
       const data = await response.json();
 
       if (!response.ok || data.success === false) {
-        console.error("Error del servidor:", data);
         alert(
           data.errors
             ? JSON.stringify(data.errors)
@@ -85,8 +84,9 @@ export default function SignUpForm() {
         return;
       }
 
-      alert("Registro y turno confirmados con éxito! Conectate para poder ver tus turnos");
-      console.log("Respuesta del backend:", data);
+      alert(
+        "Registro y turno confirmados con éxito! Conectate para poder ver tus turnos"
+      );
     } catch (error) {
       console.error("Error en el fetch:", error);
       alert("Error al conectar con el servidor");
@@ -96,112 +96,143 @@ export default function SignUpForm() {
   return (
     <form className="sign-up-form" onSubmit={handleSubmit}>
       <div className="fila fila-1">
-        <input
-          type="text"
-          name="nombre"
-          placeholder="Nombre"
-          value={formData.nombre}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="apellido"
-          placeholder="Apellido"
-          value={formData.apellido}
-          onChange={handleChange}
-          required
-        />
+        <div className="sign-input-container">
+          <label htmlFor="">Ingresá tu nombre</label>
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="sign-input-container">
+          <label htmlFor="">Ingresá tu apellido</label>
+          <input
+            type="text"
+            name="apellido"
+            placeholder="Apellido"
+            value={formData.apellido}
+            onChange={handleChange}
+            required
+          />
+        </div>
       </div>
 
       <div className="fila fila-2">
-        <input
-          type="email"
-          name="correo"
-          placeholder="Correo"
-          value={formData.correo}
-          onChange={handleChange}
-          required
-        />
+        <div className="sign-input-container">
+          <label htmlFor="">Ingresá tu email</label>
+          <input
+            type="email"
+            name="correo"
+            placeholder="Correo"
+            value={formData.correo}
+            onChange={handleChange}
+            required
+          />
+        </div>
       </div>
       <div className="fila fila-3">
-        <input
-          type="password"
-          name="contrasenia"
-          placeholder="Contraseña"
-          value={formData.contrasenia}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="contraseniaRepetida"
-          placeholder="Reingrese contraseña"
-          value={formData.contraseniaRepetida}
-          onChange={handleChange}
-          required
-        />
+        <div className="sign-input-container">
+          <label htmlFor="">Ingresá la contraseña</label>
+          <input
+            type="password"
+            name="contrasenia"
+            placeholder="Contraseña"
+            value={formData.contrasenia}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="sign-input-container">
+          <label htmlFor="">Reingresá la contraseña</label>
+          <input
+            type="password"
+            name="contraseniaRepetida"
+            placeholder="Reingrese contraseña"
+            value={formData.contraseniaRepetida}
+            onChange={handleChange}
+            required
+          />
+        </div>
       </div>
 
       <div className="fila fila-4">
-        <input
-          type="text"
-          name="celular"
-          placeholder="Celular"
-          value={formData.celular}
-          onChange={handleChange}
-          required
-        />
-        <EspecialidadInput
-          idEspecialidad={idEspecialidad}
-          setIdEspecialidad={setIdEspecialidad}
-          especialidades={especialidades}
-          onReset={() => {
-            setProfesionalSeleccionado(null);
-            setFechaSeleccionada(null);
-            setFranjaSeleccionada("");
-          }}
-        />
+        <div className="sign-input-container">
+          <label htmlFor="">Ingresá tu número de celular</label>
+          <input
+            type="text"
+            name="celular"
+            placeholder="Celular"
+            value={formData.celular}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="sign-input-container">
+          <label htmlFor="">Elegí la especialidad</label>
+          <EspecialidadInput
+            idEspecialidad={idEspecialidad}
+            setIdEspecialidad={setIdEspecialidad}
+            especialidades={especialidades}
+            onReset={() => {
+              setProfesionalSeleccionado(null);
+              setFechaSeleccionada(null);
+              setFranjaSeleccionada("");
+            }}
+          />
+        </div>
       </div>
 
       <div className="fila fila-5">
-        <input
-          type="number"
-          name="documento"
-          placeholder="Documento"
-          min={10000000}
-          max={99999999}
-          value={formData.documento}
-          onChange={handleChange}
-          required
-        />
+        <div className="sign-input-container">
+          <label htmlFor="">Ingresá tu DNI</label>
+          <input
+            type="number"
+            name="documento"
+            placeholder="Documento"
+            min={10000000}
+            max={99999999}
+            value={formData.documento}
+            onChange={handleChange}
+            required
+          />
+        </div>
       </div>
 
       <div className="fila fila-6">
-        <ProfesionalInput
-          profesionalSeleccionado={profesionalSeleccionado}
-          idEspecialidad={idEspecialidad}
-          profesionales={profesionales}
-          setProfesionalSeleccionado={setProfesionalSeleccionado}
-          onReset={() => {
-            setFechaSeleccionada(null);
-            setFranjaSeleccionada("");
-          }}
-        />
-
-        <CalendarioProfesional
-          idUsuario={profesionalSeleccionado?.idUsuario ?? null}
-          disabled={!profesionalSeleccionado}
-          onDateChange={setFechaSeleccionada}
-        />
-
-        <FranjasInput
-          condicion={!!(fechaSeleccionada && franjas.length)}
-          franjaSeleccionada={franjaSeleccionada}
-          setFranjaSeleccionada={setFranjaSeleccionada}
-          franjas={franjas}
-          fechaSeleccionada={fechaSeleccionada}
-        />
+        <div className="sign-input-container">
+          <label htmlFor="">Elegí al profesional</label>
+          <ProfesionalInput
+            profesionalSeleccionado={profesionalSeleccionado}
+            idEspecialidad={idEspecialidad}
+            profesionales={profesionales}
+            setProfesionalSeleccionado={setProfesionalSeleccionado}
+            onReset={() => {
+              setFechaSeleccionada(null);
+              setFranjaSeleccionada("");
+            }}
+          />
+        </div>
+        <div className="sign-input-container">
+          <label htmlFor="">Elegi la fecha</label>
+          <CalendarioProfesional
+            idUsuario={profesionalSeleccionado?.idUsuario ?? null}
+            disabled={!profesionalSeleccionado}
+            onDateChange={setFechaSeleccionada}
+          />
+        </div>
+        <div className="sign-input-container">
+          <label htmlFor="">Elegí la hora</label>
+          <FranjasInput
+            condicion={!!(fechaSeleccionada && franjas.length)}
+            franjaSeleccionada={franjaSeleccionada}
+            setFranjaSeleccionada={setFranjaSeleccionada}
+            franjas={franjas}
+            fechaSeleccionada={fechaSeleccionada}
+          />
+        </div>
       </div>
 
       <ActionButton leyend="Confirmar turno" />

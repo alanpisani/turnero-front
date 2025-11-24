@@ -1,6 +1,7 @@
-html{
+html {
     scroll-behavior: smooth;
 }
+
 body {
     background-color: var(--blanco);
 }
@@ -14,21 +15,28 @@ h1 {
     font-size: 42px;
 }
 
-h2{
+h2 {
     font-family: "Sinkin Sans 900 X Black";
     font-size: 42px;
     color: var(--gray);
     text-align: center;
 }
 
-h3{
+h3 {
     color: var(--gray);
     text-align: center;
 }
 
-.section-content{
+.section-content {
     display: grid;
-    margin:5rem auto 0;
+    margin: 5rem auto 0;
     gap: 3rem;
     width: 75%;
+}
+
+@media (max-width: 768px) {
+    h2 {
+        
+        font-size: 1.75rem;
+    }
 }

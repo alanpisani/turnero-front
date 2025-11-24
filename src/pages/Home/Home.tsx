@@ -11,6 +11,7 @@ import { ItsSimpleSection } from "./ItsSimpleSection/ItsSimpleSection";
 import { FirstConsultSection } from "./FirstConsultSection/FirstConsultSection";
 
 export function Home() {
+
   return (
     <>
         <Header />

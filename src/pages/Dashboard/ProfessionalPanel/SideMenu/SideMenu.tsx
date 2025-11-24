@@ -16,7 +16,10 @@ export default function SideMenu({ sideMenuData }: SideMenuProps) {
       isCancelButton: true,
     });
 
-    if (alerta.isConfirmed) window.location.href = "/conectate";
+    if (alerta.isConfirmed) {
+      localStorage.removeItem("token");
+    } window.location.href = "/conectate";
+    
   };
 
   return (
