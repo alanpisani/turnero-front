@@ -10,16 +10,19 @@ import useProfesionales from "../../../hooks/useProfesionales";
 import useFranjas from "../../../hooks/useFranjas";
 import { API_URL } from "../../../config/apiConfig";
 
+import "./NewTurnForm.css";
+import Alerta from "../../../components/shared/Alerta/Alerta";
+
 interface NewTurnFormProp {
-  dniPaciente: number;
+  idPaciente: number;
   redirect: () => void;
-  reload: () => void
+  reload: () => void;
 }
 
 export default function NewTurnForm({
-  dniPaciente,
+  idPaciente,
   redirect,
-  reload
+  reload,
 }: NewTurnFormProp) {
   const [idEspecialidad, setIdEspecialidad] = useState<number | null>(null);
   const [profesionalSeleccionado, setProfesionalSeleccionado] =
@@ -48,7 +51,7 @@ export default function NewTurnForm({
     }
 
     const turnoDTO = {
-      dniPaciente: dniPaciente,
+      idPaciente: idPaciente,
       idEspecialidad: idEspecialidad,
       idProfesional: profesionalSeleccionado.idUsuario,
       dia: fechaSeleccionada.toISOString().split("T")[0], // "YYYY-MM-DD"
@@ -56,7 +59,7 @@ export default function NewTurnForm({
     };
 
     try {
-      const response = await fetch(`${API_URL}/turno/rapido`, {
+      const response = await fetch(`${API_URL}/turno`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,21 +74,21 @@ export default function NewTurnForm({
       const result = await response.json();
 
       if (result.success) {
-        alert("Turno registrado correctamente");
+        Alerta({ titulo: "Exito", texto: result.message, icono: "success" });
         reload();
         redirect();
       } else {
-        alert("No se pudo registrar el turno.");
+        Alerta({ titulo: "Error", texto: result.errors, icono: "error" });
+        console.log(result.errors)
       }
-    } catch (error) {
-      console.error("Error al registrar turno:", error);
-      alert("Hubo un error al registrar el turno.");
+    } catch {
+      Alerta({ titulo: "Error", texto: "No se pudo conectar con el servidor.", icono: "error" });
     }
   };
 
   // Render
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="new-turn-form">
       <EspecialidadInput
         idEspecialidad={idEspecialidad}
         setIdEspecialidad={setIdEspecialidad}

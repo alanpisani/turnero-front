@@ -53,9 +53,8 @@ export default function MyTurns() {
       case "nuevo-turno":
         return (
           <div className="nuevo-turno-container">
-            <h3>Nuevo turno</h3>
             <NewTurnForm
-              dniPaciente={Number(user?.dni)}
+              idPaciente={Number(user?.id)}
               reload={fetchTurnos}
               redirect={() => setView("consulta")}
             />
@@ -84,7 +83,7 @@ export default function MyTurns() {
     <main>
       <section className="my-turns-section">
         <div className="my-turns-container">
-          <h2>Mis turnos</h2>
+          <h2>{ view === "consulta" ? "Mis turnos" : "Solicitar nuevo turno"}</h2>
           {renderContent()}
         </div>
       </section>

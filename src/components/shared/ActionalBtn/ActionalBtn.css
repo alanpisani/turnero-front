@@ -30,3 +30,9 @@
 .tertiary-button:hover{
     background-color: aliceblue;
 }
+
+@media (max-width: 768px) {
+    .secondary-button, .tertiary-button {
+        text-align: center;
+    }
+}

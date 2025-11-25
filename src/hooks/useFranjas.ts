@@ -17,28 +17,23 @@ export default function useFranjas(
     const url = `${API_URL}/profesional/${idProfesional}/franjas?fecha=${fechaISO}`;
 
     fetch(url)
-      .then((res) => res.text()) 
+      .then((res) => res.text())
       .then((text) => {
         try {
           const json = JSON.parse(text);
-          console.log("JSON parseado:", json);
 
-          
           if (Array.isArray(json)) {
             setFranjas(json);
             return;
           }
 
-          
           if (json.success && Array.isArray(json.data)) {
             setFranjas(json.data);
             return;
           }
 
-          console.warn("El backend no devolvió success/data válidos.");
           setFranjas([]);
         } catch {
-          console.error("No se pudo parsear el JSON de respuesta.");
           setFranjas([]);
         }
       })

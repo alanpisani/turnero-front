@@ -1,5 +1,6 @@
 import ActionalBtn from "../../../components/shared/ActionalBtn/ActionalBtn";
 import ActionButton from "../../../components/shared/ActionButton/ActionButton";
+import Alerta from "../../../components/shared/Alerta/Alerta";
 import { Btn } from "../../../components/shared/Btn/Btn";
 import { API_URL } from "../../../config/apiConfig";
 import { useAuth } from "../../../hooks/useAuth";
@@ -28,22 +29,40 @@ export default function TurnosListComponent({
     estadoTurno: string
   ) => {
     if (!isLoggedIn) {
-      alert("Debes estar logueado para realizar esta acción.");
+      Alerta({
+        titulo: "Error",
+        texto: "Debes iniciar sesión para realizar esta acción.",
+        icono: "error",
+      });
       return;
     }
 
     if (dniInput !== user?.dni) {
-      alert("No podés modificar turnos de otro paciente.");
+      Alerta({
+        titulo: "Error",
+        texto: "El DNI ingresado no coincide con el del usuario logueado.",
+        icono: "error",
+      });
       return;
     }
 
-    if (!confirm(`¿Estás seguro que querés ${accion} el turno?`)) return;
+    const confirmar = await Alerta({
+      titulo: "Atención",
+      texto: `¿Estás seguro que querés ${accion} el turno?`,
+      icono: "warning",
+      isCancelButton: true,
+    });
+
+    if (!confirmar.isConfirmed) return;
 
     try {
-      const res = await fetch(`${API_URL}/turno/${idTurno}/cancelar`, {
+      const res = await fetch(`${API_URL}/turno/${idTurno}/modificar`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ dniDelCancelador: dniInput, nuevoEstado:  estadoTurno}),
+        body: JSON.stringify({
+          dniDelCancelador: dniInput,
+          nuevoEstado: estadoTurno,
+        }),
       });
 
       const fetchResponse: ResponseProps<unknown> = await res.json();
@@ -53,7 +72,7 @@ export default function TurnosListComponent({
         return;
       }
 
-      alert("Turno cancelado correctamente");
+      Alerta({ titulo: "Éxito", texto: fetchResponse.message ?? "Turno cancelado correctamente", icono: "success" });
       reload();
     } catch (error) {
       console.error(error);
@@ -84,30 +103,31 @@ export default function TurnosListComponent({
 
   return (
     <div className="turnos-list-container">
-      
       {turnos.length === 0 ? (
-        <p>No tenés turnos registrados.</p>
+        <p>{ response.message }</p>
       ) : (
         <table>
           <thead>
-            <tr>
-              <th>ID</th>
+              <tr>
+                <th>#</th>
               <th>Especialidad</th>
               <th>Fecha</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {turnos.map((turno) => (
+            {turnos.map((turno, index) => (
               <tr key={turno.idTurno}>
-                <td>{turno.idTurno}</td>
+                <td>{index + 1}</td>
                 <td>{turno.especialidad}</td>
                 <td>{turno.fecha}</td>
                 <td>
                   <ActionButton
                     leyend="Cancelar"
                     isCancelButton
-                    onClick={() => handleAction("cancelar", turno.idTurno, "Cancelado")}
+                    onClick={() =>
+                      handleAction("cancelar", turno.idTurno, "Cancelado")
+                    }
                   />
                 </td>
               </tr>
@@ -116,8 +136,14 @@ export default function TurnosListComponent({
         </table>
       )}
 
-      <Btn label="Quiero un nuevo turno" onClick={onClick} />
-      <ActionalBtn leyend="Volver a inicio" linkTo="/" isTertiary />
+      <div className="btns-container">
+        <ActionalBtn onClick={onClick} leyend="Solicitar nuevo turno" />
+        <ActionalBtn
+          leyend="Volver a la página principal"
+          linkTo="/"
+          isTertiary
+        />
+      </div>
     </div>
   );
 }

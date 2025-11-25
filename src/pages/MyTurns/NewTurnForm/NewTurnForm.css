@@ -1,0 +1,16 @@
+.new-turn-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.new-turn-form input, .new-turn-form select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: var(--principal-color);
+    color: var(--blanco)
+}
+
+.new-turn-form input::placeholder {
+    color: var(--blanco);
+}
