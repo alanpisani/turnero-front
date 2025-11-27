@@ -3,6 +3,8 @@ import Logo from "../../Logo/Logo";
 
 import "./MobileHeader.css";
 import { navItems } from "../../../data/navItems";
+import NavItem from "../NavItem/NavItem";
+import LogContainer from "../LogContainer/LogContainer";
 
 export default function MobileHeader() {
   const [goodbye, setGoodbye] = useState<boolean>(true);
@@ -21,8 +23,14 @@ export default function MobileHeader() {
       </div>
       <nav className={"mobile-nav-items " + (goodbye ? "goodbye" : "")}>
         <ul>
+          <LogContainer />
           {navItems.map((item, index) => (
-            <li key={index}>{item.title}</li>
+            <NavItem
+              key={index}
+              title={item.title.toUpperCase()}
+              navItemId={item.navItemId}
+              linkTo={item.linkTo}
+            />
           ))}
         </ul>
       </nav>

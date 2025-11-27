@@ -69,17 +69,17 @@ export default function ProfessionalManagement() {
         <tbody>
           {response?.data?.data.map((prof, index) => (
             <tr key={index}>
-              <td>{prof.idUsuario}</td>
-              <td>
+              <td data-label="ID">{prof.idUsuario}</td>
+              <td data-label="Nombre">
                 Dr. {prof.nombreProfesional} {prof.apellidoProfesional}
               </td>
-              <td>{prof.matricula}</td>
-              <td
+              <td data-label="Matrícula">{prof.matricula}</td>
+              <td data-label="Estado"
                 className={"status " + (prof.isActive ? "active" : "inactive")}
               >
                 {prof.isActive ? "Activo" : "Inactivo"}
               </td>
-              <td>
+              <td data-label="Acción">
                 <SwitchUserStatusBtn
                   handleUserStatus={handleUserStatus}
                   idUsuario={prof.idUsuario}

@@ -35,3 +35,11 @@
     animation: var(--opacityIn);
     opacity: 1
 }
+
+@media (max-width: 768px) {
+    .log-container-logged {
+        flex-direction: column-reverse;
+        gap:1rem;
+        width: 100%;
+    }
+}

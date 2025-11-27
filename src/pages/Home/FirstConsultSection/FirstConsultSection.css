@@ -48,10 +48,12 @@
     background-color: var(--default-color);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .consulta-content {
         width: 100%;
         padding: 0 1rem;
+        display:flex;
+        justify-content: center;
     }
 
     .primera-consulta-container img {

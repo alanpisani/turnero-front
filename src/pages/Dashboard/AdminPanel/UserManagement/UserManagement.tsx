@@ -36,7 +36,6 @@ export default function UserManagement() {
     setResponse(data);
 
     if (!data.success) alert(data.message);
-    else console.log(data.data);
   }, [page, token]);
 
   useEffect(() => {
@@ -66,20 +65,20 @@ export default function UserManagement() {
         <tbody>
           {response?.data?.data.map((usuario, index) => (
             <tr key={index}>
-              <td>{usuario.idUsuario}</td>
-              <td>
+              <td data-label="id">{usuario.idUsuario}</td>
+              <td data-label="Nombre">
                 {usuario.nombre} {usuario.apellido ?? ""}
               </td>
-              <td>{usuario.email ?? "No proporcionado"}</td>
-              <td>{usuario.rol}</td>
-              <td
+              <td data-label="E-mail">{usuario.email ?? "No proporcionado"}</td>
+              <td data-label="rol">{usuario.rol}</td>
+              <td data-label="estado"
                 className={
                   "status " + (usuario.isActive ? "active" : "inactive")
                 }
               >
                 {usuario.isActive ? "Activo" : "Inactivo"}
               </td>
-              <td>
+              <td data-label="Acción">
                 <SwitchUserStatusBtn handleUserStatus={handleUserStatus} idUsuario={usuario.idUsuario} isActiveUser={usuario.isActive} />
               </td>
             </tr>

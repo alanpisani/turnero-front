@@ -102,10 +102,10 @@ export default function HistorialTurnos() {
         <tbody>
           {response?.data?.data.map((turno, index) => (
             <tr key={index}>
-              <td>{turno.especialidad}</td>
-              <td>{turno.fecha}</td>
-              <td>{turno.estadoTurno}</td>
-              <td>
+              <td data-label="ID">{turno.especialidad}</td>
+              <td data-label="Fecha">{turno.fecha}</td>
+              <td data-label="Estado">{turno.estadoTurno}</td>
+              <td data-label="Acción">
                 <button
                   className="create-btn"
                   onClick={() =>

@@ -1,7 +1,7 @@
 .disable-btn,
 .enable-btn,
 .create-btn {
-  padding: 60px 14px;
+  padding: 6px 14px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -36,4 +36,16 @@
 
 .create-btn:hover {
   background-color: #4a00c4;
+}
+
+@media (max-width: 768px) {
+
+  .disable-btn,
+  .enable-btn,
+  .create-btn {
+    width: 100%;
+    margin-top: 0px;
+    padding: 5px;
+    font-size: .6rem;
+  }
 }

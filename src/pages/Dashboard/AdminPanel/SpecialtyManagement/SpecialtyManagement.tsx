@@ -121,16 +121,16 @@ export default function SpecialtyManagement() {
         <tbody>
           {response?.data?.data.map((especialidad, index) => (
             <tr key={index}>
-              <td>{especialidad.idEspecialidad}</td>
-              <td>{especialidad.nombreEspecialidad}</td>
-              <td
+              <td data-label="ID">{especialidad.idEspecialidad}</td>
+              <td data-label="Nombre">{especialidad.nombreEspecialidad}</td>
+              <td data-label="Estado"
                 className={`status ${
                   especialidad.isActive ? "active" : "inactive"
                 }`}
               >
                 {especialidad.isActive ? "Activa" : "Inactiva"}
               </td>
-              <td>
+              <td data-label="Acción">
                 <button
                   className={
                     especialidad.isActive ? "disable-btn" : "enable-btn"

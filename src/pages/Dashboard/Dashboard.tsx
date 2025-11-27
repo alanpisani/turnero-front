@@ -2,7 +2,9 @@ import { Navigate, Outlet } from "react-router-dom";
 import "./Dashboard.css";
 import { useAuth } from "../../hooks/useAuth";
 import type { sideMenuDataProps } from "../../types/SideMenuProps";
-import SideMenu from "./ProfessionalPanel/SideMenu/SideMenu";
+import SideMenu from "./SideMenu/SideMenu";
+import { useEffect, useState } from "react";
+import MobileSideMenu from "./SideMenu/MobileSideMenu/MobileSideMenu";
 
 interface DashboardProps {
   rol: string;
@@ -11,6 +13,17 @@ interface DashboardProps {
 
 export default function Dashboard({ rol, sideMenuData }: DashboardProps) {
   const { isLoggedIn, user, loading } = useAuth();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleResize = () => setIsMobile(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
 
   if (loading) return null;
 
@@ -21,7 +34,10 @@ export default function Dashboard({ rol, sideMenuData }: DashboardProps) {
   return (
     <div className="panel">
       <div className="panel-body">
-        <SideMenu sideMenuData={sideMenuData} />
+        {
+          !isMobile ? <SideMenu sideMenuData={sideMenuData} /> : <MobileSideMenu sideMenuData={sideMenuData}/>
+        }
+        
         <main className="panel-content">
           <Outlet />
         </main>

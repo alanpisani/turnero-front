@@ -1,13 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./SideMenu.css";
-import type { sideMenuDataProps } from "../../../../types/SideMenuProps";
-import Alerta from "../../../../components/shared/Alerta/Alerta";
+import type { sideMenuDataProps } from "../../../types/SideMenuProps";
+import Alerta from "../../../components/shared/Alerta/Alerta";
 
 interface SideMenuProps {
   sideMenuData: sideMenuDataProps[];
 }
 
 export default function SideMenu({ sideMenuData }: SideMenuProps) {
+
+  const navigate = useNavigate();
+  
   const handleSubmit = async () => {
     const alerta = await Alerta({
       titulo: "Atencion",
@@ -18,8 +21,8 @@ export default function SideMenu({ sideMenuData }: SideMenuProps) {
 
     if (alerta.isConfirmed) {
       localStorage.removeItem("token");
-    } window.location.href = "/conectate";
-    
+      navigate("/conectate");
+    }
   };
 
   return (

@@ -71,45 +71,6 @@
   font-weight: bold;
 }
 
-.disable-btn,
-.enable-btn,
-.create-btn {
-  padding: 6px 14px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-
-.disable-btn {
-  background-color: #f44336;
-  color: #fff;
-}
-
-.disable-btn:hover {
-  background-color: #d32f2f;
-}
-
-.enable-btn {
-  background-color: #4caf50;
-  color: #fff;
-}
-
-.enable-btn:hover {
-  background-color: #388e3c;
-}
-
-.create-btn {
-  background-color: #6200ea;
-  color: #fff;
-  margin-left: 8px;
-}
-
-.create-btn:hover {
-  background-color: #4a00c4;
-}
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -136,4 +97,69 @@
 .pagination button:disabled {
   opacity: 0.4;
   cursor: default;
+}
+
+@media (max-width: 768px) {
+
+  .panel-content {
+    flex: 1;
+    background-color: #f7f7f9;
+    padding: 1rem;
+  }
+
+  .admin-section {
+    width: 100%;
+    margin: 50px;
+    color: #f0f0f0;
+    border-radius: 10px;
+    padding: 0px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    animation: var(--fadeIn);
+  }
+
+  .admin-table,
+  .admin-table thead,
+  .admin-table tbody,
+  .admin-table th,
+  .admin-table td,
+  .admin-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table tr {
+    margin-bottom: 22px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 18px 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  }
+
+  .admin-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 6px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: .75rem;
+    gap: 12px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .admin-table td:last-child {
+    border-bottom: none;
+  }
+
+  .admin-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #333;
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
 }

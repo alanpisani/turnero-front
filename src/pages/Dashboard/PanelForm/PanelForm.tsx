@@ -1,4 +1,4 @@
-import type { ExtendedFormDataType } from "../../../types/FormDataType";
+import type { ExtendedFormDataType, formDataType } from "../../../types/FormDataType";
 
 interface PanelFormProps {
   title: string;
@@ -7,7 +7,7 @@ interface PanelFormProps {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
   formData: Record<string, any>;
-  datas: ExtendedFormDataType[];
+  datas: ExtendedFormDataType[] | formDataType[];
 }
 
 export default function PanelForm({

@@ -1,17 +1,19 @@
 import "./LogContainer.css";
 import ActionalBtn from "../../shared/ActionalBtn/ActionalBtn";
 import { useAuth } from "../../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function LogContainer() {
   const { isLoggedIn, user } = useAuth();
   const [aparecer, setAparecer] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     if (confirm("¿Estás seguro que querés cerrar sesíon?")) {
       localStorage.removeItem("token");
-      window.location.href = "/";
+      navigate("/");
+      window.location.reload();
     }
   };
 
@@ -41,18 +43,11 @@ export default function LogContainer() {
       {isLoggedIn && user?.rol == "Paciente" ? (
         <div className="log-container-logged">
           <ActionalBtn linkTo="/turnos" leyend="Mis turnos" />
-          <button className="header-btn" onClick={handleDespliegue}>
-            {user?.nombre}
-          </button>
-          <nav className={"nav-oculto " + (aparecer ? "aparecer" : "")}>
-            <div className="log-container-logged-btns">
-              <ActionalBtn
-                leyend="Cerrar sesión"
-                isTertiary
-                onClick={handleLogOut}
-              />
-            </div>
-          </nav>
+          <ActionalBtn
+            leyend="Cerrar sesión"
+            isTertiary
+            onClick={handleLogOut}
+          />
         </div>
       ) : (
         <Link to="conectate" className="header-btn">
