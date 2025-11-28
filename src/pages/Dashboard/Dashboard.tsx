@@ -13,10 +13,10 @@ interface DashboardProps {
 
 export default function Dashboard({ rol, sideMenuData }: DashboardProps) {
   const { isLoggedIn, user, loading } = useAuth();
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const mediaQuery = window.matchMedia("(max-width: 1024px)");
 
     const handleResize = () => setIsMobile(mediaQuery.matches);
 

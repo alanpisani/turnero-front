@@ -9,12 +9,4 @@ export const professionalSideMenuData: sideMenuDataProps[] = [
     to: "historiales-clinicos",
     name: "Historiales clínicos",
   },
-  {
-    to: "pacientes",
-    name: "Pacientes",
-  },
-  {
-    to: "perfil",
-    name: "Mi perfil",
-  },
 ];

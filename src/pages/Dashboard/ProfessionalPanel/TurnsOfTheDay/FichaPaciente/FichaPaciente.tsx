@@ -1,75 +1,92 @@
 import Modal from "../../../../../components/shared/Modal/Modal";
 
-interface FichaPaciente{
-    idPaciente: number;
+import { useState } from "react";
+import PanelForm from "../../../PanelForm/PanelForm";
+import type { ExtendedFormDataType } from "../../../../../types/FormDataType";
+import { API_URL } from "../../../../../config/apiConfig";
+import type { ResponseProps } from "../../../../../types/ResponseProps";
+
+interface FichaPacienteProps {
+  idTurno: number;
 }
 
-export default function FichaPaciente({ idPaciente }: FichaPaciente) {
-    console.log(idPaciente);
+export default function FichaPaciente({ idTurno }: FichaPacienteProps) {
+  const [formData, setFormData] = useState({
+    diagnostico: "",
+    tratamiento: "",
+    observaciones: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    console.log(idTurno);
+
+    if (
+      !confirm(
+        "Estás a punto de crear un historial clínico relacionado con este turno. Una vez creado, el turno pasará a tener el estado 'Atendido' y no podrá crearle otro historial. ¿Estás seguro de continuar? "
+      )
+    )
+      return;
+
+    const dto = {
+      idTurno: idTurno,
+      diagnostico: formData.diagnostico,
+      tratamiento: formData.tratamiento,
+      observaciones: formData.observaciones,
+    };
+
+    const response = await fetch(`${API_URL}/historial`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dto),
+    });
+
+    const fetchResponse: ResponseProps<unknown> = await response.json();
+
+    if (!fetchResponse.success) {
+      alert(fetchResponse.message as string)
+      return;
+    }
+
+    alert(fetchResponse.message as string);
+  };
+
+  const datas: ExtendedFormDataType[] = [
+    {
+      label: "Diagnóstico",
+      name: "diagnostico",
+      type: "text",
+    },
+    {
+      label: "Tratamiento",
+      name: "tratamiento",
+      type: "text",
+    },
+    {
+      label: "Observaciones",
+      name: "observaciones",
+      type: "text",
+    },
+  ];
 
   return (
-    <Modal triggerText="Ver historial clínico">
-      <div className="modal-ficha-paciente">
-        <h3>PEPITO</h3>
-        <div className="datos-generales-ficha-paciente">
-          <div className="dato-general-ficha-paciente">
-            <i></i>
-            <div className="dato-texto-ficha-general">
-              <p className="dato-title-ficha-general">Tratamiento</p>
-              <p className="dato-data-ficha-general">Endodoncia</p>
-            </div>
-          </div>
-          <div className="dato-general-ficha-paciente">
-            <i></i>
-            <div className="dato-texto-ficha-general">
-              <p className="dato-title-ficha-general">Fecha y hora</p>
-              <p className="dato-data-ficha-general">
-                Martes 3 de noviembre a las 15:hs
-              </p>
-            </div>
-          </div>
-          <div className="dato-general-ficha-paciente">
-            <i></i>
-            <div className="dato-texto-ficha-general">
-              <p className="dato-title-ficha-general">Dentista</p>
-              <p className="dato-data-ficha-general">Christian Garriazo</p>
-            </div>
-          </div>
-        </div>
-        <div className="patient-personal-info-container">
-          <h4>Información general</h4>
-          <div className="patient-personal-info-content">
-            <div className="patient-personal-info-item">
-              <p className="patient-personal-info-label">Nombre</p>
-              <p className="patient-personal-info-data">Alan</p>
-            </div>
-            <div className="patient-personal-info-item">
-              <p className="patient-personal-info-label">Nombre</p>
-              <p className="patient-personal-info-data">Alan</p>
-            </div>
-            <div className="patient-personal-info-item">
-              <p className="patient-personal-info-label">Nombre</p>
-              <p className="patient-personal-info-data">Alan</p>
-            </div>
-            <div className="patient-personal-info-item">
-              <p className="patient-personal-info-label">Nombre</p>
-              <p className="patient-personal-info-data">Alan</p>
-            </div>
-            <div className="patient-personal-info-item">
-              <p className="patient-personal-info-label">Nombre</p>
-              <p className="patient-personal-info-data">Alan</p>
-            </div>
-            <div className="patient-personal-info-item">
-              <p className="patient-personal-info-label">Nombre</p>
-              <p className="patient-personal-info-data">Alan</p>
-            </div>
-            <div className="patient-personal-info-item">
-              <p className="patient-personal-info-label">Nombre</p>
-              <p className="patient-personal-info-data">Alan</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <Modal triggerText="Armar historial clínico">
+      <PanelForm
+        title="Historia Clínica"
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        datas={datas}
+        formData={formData}
+      />
     </Modal>
   );
 }

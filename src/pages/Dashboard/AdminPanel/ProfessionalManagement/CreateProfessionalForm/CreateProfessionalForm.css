@@ -1,0 +1,98 @@
+.create-professional-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.create-professional-form input,
+.create-professional-form select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  width: 100%;
+}
+
+.create-professional-form input:focus,
+.create-professional-form select:focus {
+  outline: none;
+  border-color: #6a4dff;
+  box-shadow: 0 0 4px rgba(106, 77, 255, 0.3);
+}
+
+.create-professional-form h4 {
+  margin-top: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  font-size: 16px;
+  color: var(--ultra-gray);
+}
+
+.especialidad-block {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.horarios-block {
+  margin-top: 10px;
+  padding-left: 10px;
+  border-left: 3px solid #ddd;
+}
+
+.horarios-block > div {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.create-professional-form button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.create-professional-form button[type="submit"] {
+  background: #6a4dff;
+  color: white;
+}
+
+.create-professional-form button[type="submit"]:hover {
+  background: #5a3fe0;
+}
+
+.especialidad-block button,
+.horarios-block button,
+.create-professional-form button[type="button"] {
+  background: #eee;
+  color: #333;
+}
+
+.especialidad-block button:hover,
+.horarios-block button:hover {
+  background: #ddd;
+}
+
+.create-professional-form button.eliminar {
+  background: #ff5757;
+  color: white;
+}
+
+.create-professional-form button.eliminar:hover {
+  background: #e14a4a;
+}
+
+.horarios-block input[type="time"] {
+  width: 110px;
+}

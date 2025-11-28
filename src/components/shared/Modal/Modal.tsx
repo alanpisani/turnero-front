@@ -1,5 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import "./Modal.css";
+import ActionButton from "../ActionButton/ActionButton";
 
 interface ModalProps {
   triggerText: string;
@@ -10,21 +11,21 @@ export default function Modal({ triggerText, children }: ModalProps) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button>{triggerText}</button>
+        <ActionButton leyend={ triggerText } isCreateButton/>
       </Dialog.Trigger>
 
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content
           className="dialog-content"
-          aria-label="Modal genérico" // 👈 evita el warning del título
-          aria-describedby={undefined} // 👈 evita el warning de descripción
+          aria-label="Modal genérico"
+          aria-describedby={undefined}
         >
           
           {children}
 
           <Dialog.Close asChild>
-            <button>Cerrar</button>
+            <ActionButton leyend="Cerrar" isCancelButton/>
           </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>

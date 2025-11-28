@@ -1,35 +1,23 @@
 @font-face {
-    font-family:"Sinkin Sans 900 X Black";
-    src:url("./assets/fonts/sinkin-sans/900-black/SinkinSans-900XBlack.eot") 
-        format("eot"),url("./assets/fonts/sinkin-sans/900-black/SinkinSans-900XBlack.woff") 
-        format("woff"),url("./assets/fonts/sinkin-sans/900-black/SinkinSans-900XBlack.ttf") 
-        format("truetype"),
-        url("./assets/fonts/sinkin-sans/900-black/SinkinSans-900XBlack.svg") 
-        format("svg");
-    font-weight:normal;
-    font-style:normal;
+    font-family: "Sinkin Sans 900 X Black";
+    src: url("./assets/fonts/sinkin-sans/900-black/SinkinSans-900XBlack.eot") format("eot"), url("./assets/fonts/sinkin-sans/900-black/SinkinSans-900XBlack.woff") format("woff"), url("./assets/fonts/sinkin-sans/900-black/SinkinSans-900XBlack.ttf") format("truetype"),
+        url("./assets/fonts/sinkin-sans/900-black/SinkinSans-900XBlack.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-    font-family:"Sinkin Sans 400 Regular";
-    src:url("./assets/fonts/sinkin-sans/400-regular/SinkinSans-400Regular.eot?") 
-        format("eot"),url("./assets/fonts/sinkin-sans/400-regular/SinkinSans-400Regular.woff") 
-        format("woff"),url("./assets/fonts/sinkin-sans/400-regular/SinkinSans-400Regular.ttf") 
-        format("truetype"),url("./assets/fonts/sinkin-sans/400-regular/SinkinSans-400Regular.svg#SinkinSans-400Regular") 
-        format("svg");
-    font-weight:normal;
-    font-style:normal;
+    font-family: "Sinkin Sans 400 Regular";
+    src: url("./assets/fonts/sinkin-sans/400-regular/SinkinSans-400Regular.eot?") format("eot"), url("./assets/fonts/sinkin-sans/400-regular/SinkinSans-400Regular.woff") format("woff"), url("./assets/fonts/sinkin-sans/400-regular/SinkinSans-400Regular.ttf") format("truetype"), url("./assets/fonts/sinkin-sans/400-regular/SinkinSans-400Regular.svg#SinkinSans-400Regular") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-    font-family:"Sinkin Sans 500 Medium Italic";
-    src:url("./assets/fonts/sinkin-sans/500-medium/SinkinSans-500MediumItalic.eot?") 
-        format("eot"),url("./assets/fonts/sinkin-sans/500-medium/SinkinSans-500MediumItalic.woff") 
-        format("woff"),url("./assets/fonts/sinkin-sans/500-medium/SinkinSans-500MediumItalic.ttf") 
-        format("truetype"),url("./assets/fonts/sinkin-sans/500-medium/SinkinSans-500MediumItalic.svg#SinkinSans-500MediumItalic") 
-        format("svg");
-    font-weight:normal;
-    font-style:normal;
+    font-family: "Sinkin Sans 500 Medium Italic";
+    src: url("./assets/fonts/sinkin-sans/500-medium/SinkinSans-500MediumItalic.eot?") format("eot"), url("./assets/fonts/sinkin-sans/500-medium/SinkinSans-500MediumItalic.woff") format("woff"), url("./assets/fonts/sinkin-sans/500-medium/SinkinSans-500MediumItalic.ttf") format("truetype"), url("./assets/fonts/sinkin-sans/500-medium/SinkinSans-500MediumItalic.svg#SinkinSans-500MediumItalic") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
 
 
@@ -40,15 +28,17 @@
     font-family: "Sinkin Sans 400 Regular";
 }
 
-html, body, #root {
-  height: 100%;
+html,
+body,
+#root {
+    height: 100%;
 }
 
-:root{
+:root {
     --principal-color: #28d3d2;
     --blanco: #fff;
-    --default-color :#777;
-    --gris :#EEE;
+    --default-color: #777;
+    --gris: #EEE;
     --gray: #3a3a3a;
     --ultra-gray: #2a2a2a;
     --bkc-footer: #0a5151;
@@ -59,22 +49,34 @@ html, body, #root {
     --opacityIn: opacityIn .5s ease;
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
-    justify-content: space-around; 
+    justify-content: space-around;
 }
 
-.mt-10{
+.mt-10 {
     margin-top: 10rem;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes opacityIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

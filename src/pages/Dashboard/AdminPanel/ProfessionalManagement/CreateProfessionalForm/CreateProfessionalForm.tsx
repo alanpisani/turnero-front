@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { API_URL } from "../../../../../config/apiConfig";
+import "./CreateProfessionalForm.css";
+import { useEspecialidades } from "../../../../../hooks/useEspecialidades";
+
 interface HorarioLaboral {
   diaLaboral: string;
   horaInicio: string;
@@ -22,7 +25,7 @@ interface ProfessionalRequestProps {
   especialidadesConHorarios: EspecialidadConHorario[];
 }
 
-export default function CreateProfessionalForm({token}) {
+export default function CreateProfessionalForm({ token }) {
   const [formData, setFormData] = useState<ProfessionalRequestProps>({
     nombre: "",
     apellido: "",
@@ -34,15 +37,10 @@ export default function CreateProfessionalForm({token}) {
     especialidadesConHorarios: [],
   });
 
-  const ESPECIALIDADES = [
-    { id: 1, nombre: "Anestesia" },
-    { id: 2, nombre: "Odontología" },
-    { id: 3, nombre: "Pediatría" },
-  ];
-
+  const especialidades = useEspecialidades();
   const DIAS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 
-  /**** Funciones para formulario ****/
+  /*** Genéricos ***/
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -50,48 +48,54 @@ export default function CreateProfessionalForm({token}) {
     const finalValue =
       type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: finalValue,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: finalValue }));
   };
 
+  /*** Especialidades ***/
   const addEspecialidad = () => {
+    if (especialidades.length === 0) return;
+
+    // Por defecto agregamos la primera especialidad
     setFormData((prev) => ({
       ...prev,
       especialidadesConHorarios: [
         ...prev.especialidadesConHorarios,
-        { idEspecialidad: ESPECIALIDADES[0].id, horarios: [] },
+        {
+          idEspecialidad: especialidades[0].idEspecialidad,
+          horarios: [],
+        },
       ],
     }));
   };
 
   const removeEspecialidad = (index: number) => {
-    const newEspecialidades = [...formData.especialidadesConHorarios];
-    newEspecialidades.splice(index, 1);
-    setFormData({ ...formData, especialidadesConHorarios: newEspecialidades });
+    const newList = [...formData.especialidadesConHorarios];
+    newList.splice(index, 1);
+    setFormData({ ...formData, especialidadesConHorarios: newList });
   };
 
-  const handleEspecialidadChange = (index: number, idEspecialidad: number) => {
-    const newEspecialidades = [...formData.especialidadesConHorarios];
-    newEspecialidades[index].idEspecialidad = idEspecialidad;
-    setFormData({ ...formData, especialidadesConHorarios: newEspecialidades });
+  const handleEspecialidadChange = (espIndex: number, id: number) => {
+    const newList = [...formData.especialidadesConHorarios];
+    newList[espIndex].idEspecialidad = id;
+    setFormData({ ...formData, especialidadesConHorarios: newList });
   };
 
+  /*** Horarios ***/
   const addHorario = (espIndex: number) => {
-    const newEspecialidades = [...formData.especialidadesConHorarios];
-    newEspecialidades[espIndex].horarios.push({
+    const newList = [...formData.especialidadesConHorarios];
+    newList[espIndex].horarios.push({
       diaLaboral: "Lunes",
       horaInicio: "08:00",
       horaFin: "17:00",
     });
-    setFormData({ ...formData, especialidadesConHorarios: newEspecialidades });
+
+    setFormData({ ...formData, especialidadesConHorarios: newList });
   };
 
   const removeHorario = (espIndex: number, horarioIndex: number) => {
-    const newEspecialidades = [...formData.especialidadesConHorarios];
-    newEspecialidades[espIndex].horarios.splice(horarioIndex, 1);
-    setFormData({ ...formData, especialidadesConHorarios: newEspecialidades });
+    const newList = [...formData.especialidadesConHorarios];
+    newList[espIndex].horarios.splice(horarioIndex, 1);
+    setFormData({ ...formData, especialidadesConHorarios: newList });
   };
 
   const handleHorarioChange = (
@@ -100,17 +104,18 @@ export default function CreateProfessionalForm({token}) {
     field: keyof HorarioLaboral,
     value: string
   ) => {
-    const newEspecialidades = [...formData.especialidadesConHorarios];
-    newEspecialidades[espIndex].horarios[horarioIndex][field] = value;
-    setFormData({ ...formData, especialidadesConHorarios: newEspecialidades });
+    const newList = [...formData.especialidadesConHorarios];
+    newList[espIndex].horarios[horarioIndex][field] = value;
+
+    setFormData({ ...formData, especialidadesConHorarios: newList });
   };
 
+  /*** Submit ***/
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Convertimos nuestro arreglo especialidad + horarios a la estructura del backend
     const especialidadesIds = formData.especialidadesConHorarios.map(
-      (esp) => esp.idEspecialidad
+      (e) => e.idEspecialidad
     );
 
     const horariosLaborales = formData.especialidadesConHorarios.flatMap(
@@ -149,73 +154,50 @@ export default function CreateProfessionalForm({token}) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="nombre"
-        placeholder="Nombre"
-        value={formData.nombre}
-        onChange={handleChange}
-      />
-      <input
-        name="apellido"
-        placeholder="Apellido"
-        value={formData.apellido}
-        onChange={handleChange}
-      />
-      <input
-        name="dni"
-        type="number"
-        placeholder="DNI"
-        value={formData.dni}
-        onChange={handleChange}
-      />
-      <input
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-      />
-      <input
-        name="contrasenia"
-        type="password"
-        placeholder="Contraseña"
-        value={formData.contrasenia}
-        onChange={handleChange}
-      />
+    <form onSubmit={handleSubmit} className="create-professional-form">
+      <h3>Registrar profesional</h3>
+
+      <input name="nombre" placeholder="Nombre" onChange={handleChange} />
+      <input name="apellido" placeholder="Apellido" onChange={handleChange} />
+      <input name="dni" type="number" placeholder="DNI" onChange={handleChange} />
+      <input name="email" placeholder="Email" onChange={handleChange} />
+      <input name="contrasenia" type="password" placeholder="Contraseña" onChange={handleChange} />
       <input
         name="contraseniaRepetida"
         type="password"
         placeholder="Repetir contraseña"
-        value={formData.contraseniaRepetida}
         onChange={handleChange}
       />
       <input
         name="matricula"
         type="number"
         placeholder="Matrícula"
-        value={formData.matricula}
         onChange={handleChange}
       />
 
       <h4>Especialidades con Horarios</h4>
+
       {formData.especialidadesConHorarios.map((esp, espIndex) => (
         <div key={espIndex} className="especialidad-block">
+          {/* Select POR CADA ESPECIALIDAD */}
           <select
             value={esp.idEspecialidad}
             onChange={(e) =>
               handleEspecialidadChange(espIndex, Number(e.target.value))
             }
           >
-            {ESPECIALIDADES.map((e) => (
-              <option key={e.id} value={e.id}>
-                {e.nombre}
+            {especialidades.map((e) => (
+              <option key={e.idEspecialidad} value={e.idEspecialidad}>
+                {e.nombreEspecialidad}
               </option>
             ))}
           </select>
+
           <button type="button" onClick={() => removeEspecialidad(espIndex)}>
             Eliminar Especialidad
           </button>
 
+          {/* HORARIOS */}
           <div className="horarios-block">
             {esp.horarios.map((h, hIndex) => (
               <div key={hIndex}>
@@ -236,6 +218,7 @@ export default function CreateProfessionalForm({token}) {
                     </option>
                   ))}
                 </select>
+
                 <input
                   type="time"
                   value={h.horaInicio}
@@ -248,6 +231,7 @@ export default function CreateProfessionalForm({token}) {
                     )
                   }
                 />
+
                 <input
                   type="time"
                   value={h.horaFin}
@@ -260,6 +244,7 @@ export default function CreateProfessionalForm({token}) {
                     )
                   }
                 />
+
                 <button
                   type="button"
                   onClick={() => removeHorario(espIndex, hIndex)}
@@ -268,12 +253,14 @@ export default function CreateProfessionalForm({token}) {
                 </button>
               </div>
             ))}
+
             <button type="button" onClick={() => addHorario(espIndex)}>
               Agregar Horario
             </button>
           </div>
         </div>
       ))}
+
       <button type="button" onClick={addEspecialidad}>
         Agregar Especialidad
       </button>

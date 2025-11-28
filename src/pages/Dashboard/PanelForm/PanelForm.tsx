@@ -1,4 +1,5 @@
 import type { ExtendedFormDataType, formDataType } from "../../../types/FormDataType";
+import "./PanelForm.css";
 
 interface PanelFormProps {
   title: string;

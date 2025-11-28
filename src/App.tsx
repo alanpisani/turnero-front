@@ -8,8 +8,6 @@ import Forbidden from './pages/Forbidden/Forbidden'
 import TurnsOfTheDay from './pages/Dashboard/ProfessionalPanel/TurnsOfTheDay/TurnsOfTheDay'
 import ClinicalRecords from './pages/Dashboard/ProfessionalPanel/ClinicalRecords/ClinicalRecords'
 import { professionalSideMenuData } from './data/SideMenu/professionalSideMenuData'
-import MyPatients from './pages/Dashboard/ProfessionalPanel/MyPatients/MyPatients'
-import ProfessionalProfile from './pages/Dashboard/ProfessionalPanel/ProfessionalProfile/ProfessionalProfile'
 import IntroProfessionalPanel from './pages/Dashboard/ProfessionalPanel/IntroProfessionalPanel/IntroProfessionalPanel'
 import { recepcionistSideMenuData } from './data/SideMenu/recepcionistSideMenuData'
 import { adminSideMenuData } from './data/SideMenu/adminSideMenuData'
@@ -29,11 +27,10 @@ function App() {
       <Route path="/turnos" element={<MyTurns/>} />
       <Route path="/conectate" element={<Login />} />
       <Route path="/preguntas" element={<Questions />} />
+      
       <Route path="/panel/profesional" element={<Dashboard rol="Profesional" sideMenuData={professionalSideMenuData}/>}>
         <Route path="turnos" element={<TurnsOfTheDay />}/>
         <Route path="historiales-clinicos" element={<ClinicalRecords />}/>
-        <Route path="pacientes" element={<MyPatients />}/>
-        <Route path="perfil" element={<ProfessionalProfile />}/>
         <Route path="" element={<IntroProfessionalPanel />}/>
       </Route>
       <Route path="/panel/recepcionista" element={<Dashboard rol="Recepcionista" sideMenuData={recepcionistSideMenuData} />}>

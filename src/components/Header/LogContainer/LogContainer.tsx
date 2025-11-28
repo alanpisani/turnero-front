@@ -3,14 +3,18 @@ import ActionalBtn from "../../shared/ActionalBtn/ActionalBtn";
 import { useAuth } from "../../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Alerta from "../../shared/Alerta/Alerta";
 
 export default function LogContainer() {
   const { isLoggedIn, user } = useAuth();
   const [aparecer, setAparecer] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const handleLogOut = () => {
-    if (confirm("¿Estás seguro que querés cerrar sesíon?")) {
+  const handleLogOut = async () => {
+
+    const confirmLogout = await Alerta({ titulo: "Cerrar sesión", texto: "¿Estás seguro que querés cerrar sesión?", icono: "warning", isCancelButton: true });
+    
+    if (confirmLogout.isConfirmed) {
       localStorage.removeItem("token");
       navigate("/");
       window.location.reload();

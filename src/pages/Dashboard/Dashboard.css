@@ -15,7 +15,6 @@
   background-color: #f7f7f9;
   padding: 2rem;
   overflow-y: auto;
-  border: 1px solid red;
   display: flex;
   align-items: center;
 }
@@ -99,7 +98,7 @@
   cursor: default;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
   .panel-content {
     flex: 1;

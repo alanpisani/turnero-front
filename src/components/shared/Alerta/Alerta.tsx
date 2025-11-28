@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import "./Alerta.css";
 
 interface AlertaProps {
   titulo: string;
@@ -17,7 +18,7 @@ export default function Alerta({
     title: titulo,
     text: texto,
     icon: icono,
-    showCancelButton: isCancelButton ? true : false,
-    confirmButtonColor: "#28d3d2"
+    showCancelButton: !!isCancelButton,
+    confirmButtonColor: "#28d3d2",
   });
 }
